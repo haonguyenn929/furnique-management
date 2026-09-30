@@ -26,7 +26,7 @@
     "material-react-table": "^2.8.0",
     "moment": "^2.30.1",
     "react": "^18.2.0",
-    "react-apexcharts": "^1.4.1",
+    "react-apexcharts": "1.4.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.3",
     "react-material-file-upload": "^0.0.4",
