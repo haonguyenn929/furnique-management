@@ -21,7 +21,18 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
     }
   },
   { field: 'customer', headerName: 'Khách hàng', width: 180 },
-  { field: 'orderDate', headerName: 'Ngày đặt', type: 'date', width: 130 },
+  {
+    field: 'orderDate',
+    headerName: 'Ngày đặt',
+    type: 'date',
+    width: 130,
+    valueGetter: (value) => {
+      if (!value) return null
+
+      const date = new Date(value)
+      return Number.isNaN(date.getTime()) ? null : date
+    }
+  },
   {
     field: 'totalAmount',
     headerName: 'Tổng cộng',

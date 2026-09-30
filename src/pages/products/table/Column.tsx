@@ -46,7 +46,13 @@ export const productsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
     field: 'createdAt',
     headerName: 'Ngày nhập',
     type: 'date',
-    width: 120
+    width: 120,
+    valueGetter: (value) => {
+      if (!value) return null
+
+      const date = new Date(value)
+      return Number.isNaN(date.getTime()) ? null : date
+    }
   },
   {
     field: 'actions',
