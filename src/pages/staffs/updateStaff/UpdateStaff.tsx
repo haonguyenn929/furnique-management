@@ -4,7 +4,6 @@ import EditIcon from '@mui/icons-material/Edit'
 import BlockIcon from '@mui/icons-material/Block'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import FileUpload from 'react-material-file-upload'
 import { useNavigate, useParams } from 'react-router-dom'
 import { v4 } from 'uuid'
 import CancelButton from '~/components/button/CancelButton'
@@ -28,6 +27,7 @@ import { InputWrapper } from '../addStaff/AddStaff.styled'
 import { roleValues } from '../constants'
 import { addStaffValidationSchema } from '../validation/AddStaffValidationSchema'
 import DeactiveStaffModal from '../components/DeactiveStaffModal'
+import { FileUpload } from 'react-material-file-upload'
 
 const UpdateStaff = () => {
   const navigate = useNavigate()
@@ -224,7 +224,10 @@ const UpdateStaff = () => {
             onChange={setFiles}
             maxFiles={1}
             maxSize={1024 * 1024 * 8}
-            accept='image/png, image/jpeg'
+            accept={{
+              'image/png': ['.png'],
+              'image/jpeg': ['.jpg', '.jpeg']
+            }}
             buttonText='Thay đổi ảnh'
           />
         </DetailThumbnailContainer>

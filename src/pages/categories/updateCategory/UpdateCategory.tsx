@@ -3,7 +3,6 @@ import CloseIcon from '@mui/icons-material/Close'
 import EditIcon from '@mui/icons-material/Edit'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import FileUpload from 'react-material-file-upload'
 import { useNavigate, useParams } from 'react-router-dom'
 import PrimaryButton from '~/components/button/PrimaryButton'
 import SecondaryButton from '~/components/button/SecondaryButton'
@@ -22,6 +21,7 @@ import { DetailThumbnailContainer } from '../viewCategory/ViewCategoryDetail.sty
 import { UpdateImage } from './UpdateCategory.styled'
 import useCloudinaryApi from '~/hooks/api/useCloudinaryApi'
 import { v4 } from 'uuid'
+import { FileUpload } from 'react-material-file-upload'
 
 const UpdateCategory = () => {
   const navigate = useNavigate()
@@ -160,7 +160,7 @@ const UpdateCategory = () => {
             onChange={setFiles}
             maxFiles={MAX_CATEGORY_IMAGE_FILES}
             maxSize={MAX_CATEGORY_IMAGE_FILES_SIZE}
-            accept='image/png, image/jpeg'
+            accept={{ 'image/png': ['.png'], 'image/jpeg': ['.jpg', '.jpeg'] }}
             buttonText='Thay đổi ảnh'
           />
         </DetailThumbnailContainer>

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Control, FieldErrors } from 'react-hook-form'
 import InputTextForm from '~/components/form/InputTextForm'
-import { IAddProductProps, IProductsProps } from '~/global/interfaces/interface'
+import { IProductsProps } from '~/global/interfaces/interface'
 import { InformationContainer, TitleText } from '../addProduct/AddProduct.styled'
 
 interface GeneralInfoSectionProps {
-  control: Control<IAddProductProps | IProductsProps>
-  errors: FieldErrors<IAddProductProps | IProductsProps>
+  control: Control<IProductsProps>
+  errors: FieldErrors<IProductsProps>
 }
 
 const GeneralInformationSection = ({ control, errors }: GeneralInfoSectionProps) => {

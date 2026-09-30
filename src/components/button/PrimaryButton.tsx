@@ -2,7 +2,7 @@ import { ICustomButtonProps } from '~/global/interfaces/interface'
 import CustomButton from './CustomButton'
 
 const PrimaryButton = (props: ICustomButtonProps) => {
-  const { name, onClick, icon, disable } = props
+  const { name, onClick, icon, disable, sx } = props
   return (
     <>
       <CustomButton
@@ -24,7 +24,8 @@ const PrimaryButton = (props: ICustomButtonProps) => {
           },
           '&:focus': {
             outline: 'none'
-          }
+          },
+          ...sx
         }}
         onClick={onClick}
         disable={disable}

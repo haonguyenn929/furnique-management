@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Checkbox, FormControl, FormControlLabel, FormLabel } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { Controller, FieldValues, useForm } from 'react-hook-form'
 import { ICheckboxGroupProps, ICheckboxOption } from '~/global/interfaces/interface'
 
 const useCheckboxGroup = (defaultValues: any[] = []) => {
@@ -21,14 +21,14 @@ const useCheckboxGroup = (defaultValues: any[] = []) => {
   return { selectedItems, handleSelect, prevSelectedItems, setPrevSelectedItems }
 }
 
-const InputCheckboxForm = ({
+const InputCheckboxForm = <TFieldValues extends FieldValues = FieldValues>({
   control,
   name,
   label,
   options,
   defaultValues,
   onSelectionChange
-}: ICheckboxGroupProps & { onSelectionChange: (selectedItems: string[]) => void }) => {
+}: ICheckboxGroupProps<TFieldValues> & { onSelectionChange: (selectedItems: string[]) => void }) => {
   const { setValue } = useForm()
   const { selectedItems, handleSelect, prevSelectedItems, setPrevSelectedItems } = useCheckboxGroup(defaultValues)
 

@@ -10,7 +10,7 @@ const MainLayout = ({ children }: ILayoutProps) => {
     <>
       <Wrapper>
         <Sidebar mainContainerRef={mainContainerRef} />
-        <MainContainer>
+        <MainContainer ref={mainContainerRef}>
           <Appbar />
           {children}
         </MainContainer>

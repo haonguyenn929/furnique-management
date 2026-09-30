@@ -2,6 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import MailOutlineRounded from '@mui/icons-material/MailOutlineRounded'
+import LockOutlined from '@mui/icons-material/LockOutlined'
 import PrimaryButton from '~/components/button/PrimaryButton'
 import { EMPTY } from '~/global/constants/constants'
 import { ScreenPath, UserRole } from '~/global/enum'
@@ -43,18 +45,42 @@ const LoginForm = () => {
         name='email'
         label='Email'
         type='email'
+        placeholder='example@furnique.com'
+        startIcon={<MailOutlineRounded fontSize='small' />}
         error={errors.email?.message}
-        variant='standard'
+        variant='outlined'
+        sx={{ mb: 2 }}
       />
       <InputTextForm
         control={control}
         name='password'
         label='Mật khẩu'
-        error={errors.password?.message}
         type='password'
-        variant='standard'
+        placeholder='••••••••'
+        startIcon={<LockOutlined fontSize='small' />}
+        error={errors.password?.message}
+        variant='outlined'
+        sx={{ mb: 2.5 }}
       />
-      <PrimaryButton type='submit' name='Đăng nhập' variant='contained' />
+      <PrimaryButton
+        type='submit'
+        name='Đăng nhập'
+        variant='contained'
+        sx={{
+          width: '100%',
+          py: 1.2,
+          fontSize: '15px',
+          fontWeight: 600,
+          borderRadius: '10px',
+          backgroundColor: 'var(--primary-color)',
+          color: '#ffffff',
+          boxShadow: '0 4px 14px rgba(227, 150, 74, 0.35)',
+          '&:hover': {
+            backgroundColor: 'var(--primary-dark-color)',
+            boxShadow: '0 6px 20px rgba(227, 150, 74, 0.45)'
+          }
+        }}
+      />
     </FormWrapper>
   )
 }

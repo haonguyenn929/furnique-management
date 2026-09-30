@@ -8,7 +8,7 @@ import { Avatar, Image } from './Sidebar.styled'
 import useAuth from '~/hooks/useAuth'
 
 interface SidebarProps {
-  prop: React.RefObject<HTMLDivElement>
+  prop: React.RefObject<HTMLDivElement | null>
 }
 
 const OptionList: React.FC<SidebarProps> = ({ prop }) => {

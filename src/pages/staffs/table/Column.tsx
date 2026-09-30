@@ -12,10 +12,11 @@ export const staffsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
     width: 50,
     filterable: false,
     sortable: false,
-    valueGetter: (params) => {
-      const page = params.api.state.pagination.paginationModel.page
-      const pageSize = params.api.state.pagination.paginationModel.pageSize
-      const rowIndex = params.api.getRowIndexRelativeToVisibleRows(params.row.id)
+    valueGetter: (_value, row, _column, apiRef) => {
+      if (!apiRef?.current) return 0
+      const page = apiRef.current.state.pagination?.paginationModel?.page ?? 0
+      const pageSize = apiRef.current.state.pagination?.paginationModel?.pageSize ?? 10
+      const rowIndex = apiRef.current.getRowIndexRelativeToVisibleRows(row.id) ?? 0
       return page * pageSize + rowIndex + 1
     }
   },

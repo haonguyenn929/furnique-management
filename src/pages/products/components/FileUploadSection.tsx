@@ -1,4 +1,4 @@
-import FileUpload from 'react-material-file-upload'
+import { FileUpload } from 'react-material-file-upload'
 import { InformationContainer, TitleText } from '../addProduct/AddProduct.styled'
 
 interface ImageUploadSectionProps {
@@ -45,7 +45,16 @@ const FileUploadSection = ({ files, setFiles, maxFiles, maxSize, is3D }: ImageUp
           onChange={setFiles}
           maxFiles={maxFiles}
           maxSize={maxSize}
-          accept={is3D ? '.glb' : 'image/png, image/jpeg'}
+          accept={
+            is3D
+              ? {
+                  'model/gltf-binary': ['.glb']
+                }
+              : {
+                  'image/png': ['.png'],
+                  'image/jpeg': ['.jpg', '.jpeg']
+                }
+          }
           title={`Kéo thả ảnh vào đây hoặc bấm thêm ảnh`}
           buttonText='Tải lên'
         />

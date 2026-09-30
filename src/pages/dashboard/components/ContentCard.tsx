@@ -8,7 +8,7 @@ const ContentCard = ({ icon, title, percentage, numberReport, status }: CardDash
   return (
     <CardWrapper>
       <IconWrapper>{icon}</IconWrapper>
-      <Typography fontSize='40px'>{numberReport}</Typography>
+      <Typography sx={{ fontSize: '40px' }}>{numberReport}</Typography>
       <TitleWrapper>
         <Typography variant='subtitle1' sx={{ color: 'var(--gray-color)' }}>
           {title}

@@ -36,8 +36,9 @@ export const FooterText = styled.p`
 export const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 50%;
+  justify-content: center;
   align-items: center;
-  width: 30em;
+  width: 100%;
+  max-width: 380px;
+  margin-top: 1.5rem;
 `

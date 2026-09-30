@@ -14,6 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { deliveryValidationSchema } from '../validation/DeliveryValidationSchema'
 import useTasksApi from '~/hooks/api/useTasksApi'
 import { useNavigate } from 'react-router-dom'
+import dayjs, { Dayjs } from 'dayjs'
 
 export interface ICreateDeliveryModal {
   deliveryStaffList: {
@@ -36,8 +37,12 @@ export interface IAssignDelivery {
 const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModal) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
-  const [startDate, setStartDate] = useState('')
+  const handleClose = () => {
+    setOpen(false)
+    setStartDate(null)
+    reset(defaultValues)
+  }
+  const [startDate, setStartDate] = useState<Dayjs | null>(null)
   const navigate = useNavigate()
   const { createShippingTask } = useTasksApi()
   const defaultValues: IAssignDelivery = {
@@ -70,6 +75,7 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
       startDate: new Date(data.startDate).toISOString()
     }
     await createShippingTask(requestBody)
+    setStartDate(null)
     reset(defaultValues)
     navigate(ScreenPath.ORDERS)
   }
@@ -162,11 +168,11 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DemoContainer sx={{ my: 2 }} components={['DatePicker']}>
                     <DatePicker
-                      onChange={(value) => {
-                        setStartDate(value || '')
-                        onChange(value)
+                      onChange={(val) => {
+                        setStartDate(val)
+                        onChange(val ? val.toISOString() : '')
                       }}
-                      value={value}
+                      value={value ? dayjs(value) : null}
                       disablePast
                       sx={{ width: '100%' }}
                       label='Ngày bắt đầu'
@@ -183,14 +189,14 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
             <Controller
               name='dueDate'
               control={control}
-              render={({ field: { onChange } }) => (
+              render={({ field: { onChange, value } }) => (
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DemoContainer sx={{ my: 2 }} components={['DatePicker']}>
                     <DatePicker
-                      onChange={onChange}
-                      value={startDate}
+                      onChange={(val) => onChange(val ? val.toISOString() : '')}
+                      value={value ? dayjs(value) : null}
                       disablePast
-                      minDate={startDate}
+                      minDate={startDate ?? undefined}
                       sx={{ width: '100%' }}
                       label='Ngày kết thúc'
                       slotProps={{

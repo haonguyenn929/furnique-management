@@ -8,10 +8,11 @@ export const orderListColumns: GridColDef[] = [
     width: 50,
     filterable: false,
     sortable: false,
-    valueGetter: (params) => {
-      const page = params.api.state.pagination.paginationModel.page
-      const pageSize = params.api.state.pagination.paginationModel.pageSize
-      const rowIndex = params.api.getRowIndexRelativeToVisibleRows(params.row.id)
+    valueGetter: (_value, row, _column, apiRef) => {
+      if (!apiRef?.current) return 0
+      const page = apiRef.current.state.pagination?.paginationModel?.page ?? 0
+      const pageSize = apiRef.current.state.pagination?.paginationModel?.pageSize ?? 10
+      const rowIndex = apiRef.current.getRowIndexRelativeToVisibleRows(row.id) ?? 0
       return page * pageSize + rowIndex + 1
     }
   },
@@ -40,12 +41,13 @@ export const orderListColumns: GridColDef[] = [
     type: 'number',
     width: 90,
     sortable: false,
-    valueFormatter: (params) => {
+    valueFormatter: (value: number) => {
+      if (value == null) return ''
       const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND'
       })
-      return formatter.format(params.value)
+      return formatter.format(value)
     }
   },
   {
@@ -55,12 +57,13 @@ export const orderListColumns: GridColDef[] = [
     type: 'number',
     width: 100,
     sortable: false,
-    valueFormatter: (params) => {
+    valueFormatter: (value: number) => {
+      if (value == null) return ''
       const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND'
       })
-      return formatter.format(params.value)
+      return formatter.format(value)
     }
   }
 ]

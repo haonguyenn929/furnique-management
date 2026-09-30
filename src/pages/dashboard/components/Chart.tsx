@@ -1,4 +1,4 @@
-import { ApexOptions } from 'apexcharts'
+import { ApexAxisChartSeries, ApexOptions } from 'apexcharts'
 import Chart from 'react-apexcharts'
 
 type Props = {

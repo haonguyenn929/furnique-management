@@ -2,7 +2,7 @@
 import { SxProps } from '@mui/material'
 import { GridColDef } from '@mui/x-data-grid'
 import React, { ChangeEvent, ReactNode } from 'react'
-import { Control } from 'react-hook-form'
+import { Control, FieldPath, FieldValues } from 'react-hook-form'
 import { ILoginFormProps } from '~/pages/auth/types/LoginForm'
 import { IVariant } from './productInterface'
 
@@ -11,14 +11,14 @@ export interface ILayoutProps {
   title?: string
 }
 
-export interface IFormInputProps {
-  name: string
+export interface IFormInputProps<TFieldValues extends FieldValues = any> {
+  name: FieldPath<TFieldValues> | (string & {})
   label?: string
-  control: Control<any>
+  control: Control<TFieldValues, any>
   error?: string
-  type?: 'password' | 'date' | 'checkbox' | 'radio' | 'email' | 'hidden' | 'number'
+  type?: 'password' | 'date' | 'checkbox' | 'radio' | 'email' | 'hidden' | 'number' | 'text'
   sx?: SxProps
-  variant: 'outlined' | 'standard'
+  variant?: 'outlined' | 'standard' | 'filled'
   multiline?: boolean
   rows?: number
   value?: string
@@ -26,6 +26,8 @@ export interface IFormInputProps {
   defaultValues?: any
   disabled?: boolean
   required?: boolean
+  startIcon?: ReactNode
+  endIcon?: ReactNode
 }
 export interface IDropdownOption {
   label: string
@@ -41,12 +43,12 @@ export interface ICheckboxOption {
   value: any
 }
 
-export interface ICheckboxGroupProps {
-  name?: string
+export interface ICheckboxGroupProps<TFieldValues extends FieldValues = any> {
+  name?: FieldPath<TFieldValues> | (string & {})
   label: string
   options: ICheckboxOption[]
   defaultValues?: any[]
-  control?: Control<any, any>
+  control?: Control<TFieldValues, any>
 }
 
 export interface IRadioGroupProps {
@@ -107,7 +109,7 @@ export interface IMainLayoutProps {
 }
 
 export interface ISidebarProps {
-  mainContainerRef: React.RefObject<HTMLDivElement>
+  mainContainerRef: React.RefObject<HTMLDivElement | null>
 }
 
 export interface IDataTableProps {

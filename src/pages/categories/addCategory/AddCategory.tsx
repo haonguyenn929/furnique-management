@@ -3,7 +3,6 @@ import AddIcon from '@mui/icons-material/Add'
 import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import FileUpload from 'react-material-file-upload'
 import { useNavigate } from 'react-router-dom'
 import PrimaryButton from '~/components/button/PrimaryButton'
 import SecondaryButton from '~/components/button/SecondaryButton'
@@ -18,6 +17,7 @@ import { cloudinaryURLConvert } from '~/utils/common.utils'
 import { notifyError, notifySuccess } from '~/global/toastify'
 import useCloudinaryApi from '~/hooks/api/useCloudinaryApi'
 import { v4 } from 'uuid'
+import { FileUpload } from 'react-material-file-upload'
 const AddCategory = () => {
   const navigate = useNavigate()
   const [files, setFiles] = useState<File[]>([])
@@ -117,7 +117,7 @@ const AddCategory = () => {
             onChange={setFiles}
             maxFiles={MAX_CATEGORY_IMAGE_FILES}
             maxSize={MAX_CATEGORY_IMAGE_FILES_SIZE}
-            accept='image/png, image/jpeg'
+            accept={{ 'image/png': ['.png'], 'image/jpeg': ['.jpg', '.jpeg'] }}
             title={`Kéo thả ảnh vào đây hoặc bấm thêm ảnh`}
             buttonText='Tải lên'
           />

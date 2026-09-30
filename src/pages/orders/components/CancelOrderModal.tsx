@@ -26,7 +26,7 @@ const CancelOrderModal = ({ open, handleClose, orderId }: OrderModalProps) => {
     boxShadow: 24,
     p: 4
   }
-  const defaultValues = {
+  const defaultValues: ICancelOrderProps = {
     reason: EMPTY
   }
   const {

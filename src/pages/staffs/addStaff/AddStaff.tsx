@@ -3,7 +3,6 @@ import AddIcon from '@mui/icons-material/Add'
 import CloseIcon from '@mui/icons-material/Close'
 import { ChangeEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import FileUpload from 'react-material-file-upload'
 import { useNavigate } from 'react-router-dom'
 import { v4 } from 'uuid'
 import PrimaryButton from '~/components/button/PrimaryButton'
@@ -27,6 +26,7 @@ import { cloudinaryURLConvert } from '~/utils/common.utils'
 import { roleValues } from '../constants'
 import { addStaffValidationSchema } from '../validation/AddStaffValidationSchema'
 import { InputWrapper } from './AddStaff.styled'
+import { FileUpload } from 'react-material-file-upload'
 
 const AddStaff = () => {
   const navigate = useNavigate()
@@ -139,7 +139,10 @@ const AddStaff = () => {
             onChange={setFiles}
             maxFiles={1}
             maxSize={1024 * 1024 * 8}
-            accept='image/png, image/jpeg'
+            accept={{
+              'image/png': ['.png'],
+              'image/jpeg': ['.jpg', '.jpeg']
+            }}
             title={`Kéo thả ảnh vào đây hoặc bấm thêm ảnh`}
             buttonText='Tải lên'
           />

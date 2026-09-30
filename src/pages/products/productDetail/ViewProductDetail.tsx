@@ -77,7 +77,7 @@ const ViewProductDetail = () => {
             onClick={handleEditButton}
           />
         </ButtonWrapper>
-        <Typography variant='h3' fontWeight='bold' sx={{ mt: 3 }} textAlign='center'>
+        <Typography variant='h3' sx={{ mt: 3, fontWeight: 'bold', textAlign: 'center' }}>
           {productData?.name}
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
@@ -96,7 +96,7 @@ const ViewProductDetail = () => {
             ))}
           </Carousel>
           <Box sx={{ width: '65%', p: 3 }}>
-            <Typography variant='h5' sx={{ my: 2 }} fontWeight='bold'>
+            <Typography variant='h5' sx={{ my: 2, fontWeight: 'bold' }}>
               Thông tin chung
             </Typography>
             <Typography sx={{ my: 1 }} variant='body1'>
@@ -117,7 +117,7 @@ const ViewProductDetail = () => {
             {productData?.variants.map((value: IVariantDetail, index: number) => (
               <>
                 <Box>
-                  <Typography variant='h5' sx={{ my: 2 }} fontWeight='bold'>
+                  <Typography variant='h5' sx={{ my: 2, fontWeight: 'bold' }}>
                     Phân loại {index + 1}
                   </Typography>
                   <Typography sx={{ my: 1 }} variant='body1'>

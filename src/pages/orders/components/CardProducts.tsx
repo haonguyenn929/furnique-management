@@ -17,8 +17,8 @@ const CardProducts = ({ image, name, variant }: ICardOrder) => {
             padding: '5px 0px 0px 15px'
           }}
         >
-          <Typography fontSize={16}>{name}</Typography>
-          <Typography fontSize={14} color='text.secondary' component='div'>
+          <Typography sx={{ fontSize: 16 }}>{name}</Typography>
+          <Typography sx={{ fontSize: 14 }} color='text.secondary' component='div'>
             {variant}
           </Typography>
         </CardContent>

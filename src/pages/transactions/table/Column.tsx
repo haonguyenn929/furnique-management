@@ -8,10 +8,11 @@ export const transactionsColumn: GridColDef[] = [
     width: 100,
     filterable: false,
     sortable: false,
-    valueGetter: (params) => {
-      const page = params.api.state.pagination.paginationModel.page
-      const pageSize = params.api.state.pagination.paginationModel.pageSize
-      const rowIndex = params.api.getRowIndexRelativeToVisibleRows(params.row.id)
+    valueGetter: (_value, row, _column, apiRef) => {
+      if (!apiRef?.current) return 0
+      const page = apiRef.current.state.pagination?.paginationModel?.page ?? 0
+      const pageSize = apiRef.current.state.pagination?.paginationModel?.pageSize ?? 10
+      const rowIndex = apiRef.current.getRowIndexRelativeToVisibleRows(row.id) ?? 0
       return page * pageSize + rowIndex + 1
     }
   },
@@ -20,9 +21,9 @@ export const transactionsColumn: GridColDef[] = [
     headerName: 'Tên giao dịch',
     width: 450,
     filterable: false,
-    valueGetter: (params) => {
-      if(params.row.transaction.data?.orderCode) return params.row.transaction.data?.orderCode
-      return params.row.transaction.orderCode
+    valueGetter: (_value, row) => {
+      if (row.transaction?.data?.orderCode) return row.transaction.data?.orderCode
+      return row.transaction?.orderCode
     }
   },
   {
@@ -38,12 +39,12 @@ export const transactionsColumn: GridColDef[] = [
     width: 250,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
-    valueFormatter: (params) => {
+    valueFormatter: (value) => {
       const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND'
       })
-      return formatter.format(params.value)
+      return formatter.format(value)
     }
   },
   {

@@ -6,7 +6,7 @@ import { Typography } from '@mui/material'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import dayjs from 'dayjs'
+import type { Dayjs } from 'dayjs'
 import { useEffect, useState } from 'react'
 import Loading from '~/components/loading/Loading'
 import { PeriodType } from '~/global/enum'
@@ -125,16 +125,14 @@ const Dashboard = () => {
     setRevenueData([{ name: 'Doanh thu', color: 'var(--primary-color)', value: response.statistic }])
   }
 
-  const handleYearChange = (value: number | null) => {
+  const handleYearChange = (value: Dayjs | null) => {
     if (value) {
-      const year = dayjs(value).year()
-      setSelectedYear(year)
+      setSelectedYear(value.year())
     }
   }
 
-  const shouldDisableYear = (date: number) => {
-    const year = dayjs(date).year()
-    return year < 2024
+  const shouldDisableYear = (date: Dayjs) => {
+    return date.year() < 2024
   }
 
   return (
@@ -195,7 +193,7 @@ const Dashboard = () => {
                   <ShoppingBasketRoundedIcon sx={{ color: 'var(--primary-color)', fontSize: '30px' }} />
                 </IconWrapper>
                 <div style={{ display: 'flex', flexDirection: 'column', width: 'calc(100% - 80px)' }}>
-                  <Typography variant='h6' fontWeight={500}>
+                  <Typography variant='h6' sx={{ fontWeight: 500 }}>
                     Tổng đơn hàng
                   </Typography>
                   {dailyOrderData?.total}
@@ -206,7 +204,7 @@ const Dashboard = () => {
                   <ShoppingCartRoundedIcon sx={{ color: 'var(--primary-color)', fontSize: '30px' }} />
                 </IconWrapper>
                 <div style={{ display: 'flex', flexDirection: 'column', width: 'calc(100% - 80px)' }}>
-                  <Typography variant='h6' fontWeight={500}>
+                  <Typography variant='h6' sx={{ fontWeight: 500 }}>
                     Tổng doanh thu
                   </Typography>
                   {formatCurrency(dailySaleData?.total ?? 0)}
