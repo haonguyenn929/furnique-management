@@ -24,10 +24,10 @@ const DeactiveStaffModal = ({ staffId, handleClose, open }: DeactiveStaffModalPr
   const handleDisableStaffButton = async (staffId: string) => {
     try {
       deactiveStaff(staffId)
-      notifySuccess('Vô hiệu hóa nhân viên thành công')
+      notifySuccess('Staff deactivated successfully')
       navigate(ScreenPath.STAFFS)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       handleClose()
     }
@@ -52,19 +52,19 @@ const DeactiveStaffModal = ({ staffId, handleClose, open }: DeactiveStaffModalPr
       <Fade in={open}>
         <Box sx={style}>
           <Typography id='transition-modal-title' variant='h6' component='h2' sx={{ marginBottom: '20px' }}>
-            Bạn có chắc chắn muốn vô hiệu hóa nhân viên này?
+            Are you sure you want to deactivate this staff?
           </Typography>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <SecondaryButton
               variant='contained'
-              name='Hủy'
+              name='Cancel'
               color='var(--gray-light-color)'
               onClick={handleBackButton}
               type='button'
             />
             <CancelButton
               variant='outlined'
-              name='Đồng ý'
+              name='Confirm'
               type='button'
               onClick={() => handleDisableStaffButton(staffId)}
             />

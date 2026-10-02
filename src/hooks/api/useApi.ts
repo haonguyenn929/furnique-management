@@ -17,7 +17,7 @@ const useApi = () => {
         }
 
         if (errorStatusCode === 403) {
-          message = 'Không có quyền truy cập'
+          message = 'Access denied'
         }
       }
       if (message) {

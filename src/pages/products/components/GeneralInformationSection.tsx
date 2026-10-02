@@ -13,11 +13,11 @@ const GeneralInformationSection = ({ control, errors }: GeneralInfoSectionProps)
   return (
     <>
       <InformationContainer>
-        <TitleText>Thông tin chung</TitleText>
+        <TitleText>General Information</TitleText>
         <InputTextForm
           control={control}
           name='name'
-          label='Tên sản phẩm'
+          label='Product Name'
           sx={{ width: '44%', marginLeft: ' 20px' }}
           variant='outlined'
           error={errors.name?.message}
@@ -25,7 +25,7 @@ const GeneralInformationSection = ({ control, errors }: GeneralInfoSectionProps)
         <InputTextForm
           control={control}
           name='brand'
-          label='Thương hiệu'
+          label='Brand'
           sx={{ width: '44%', marginLeft: ' 20px' }}
           variant='outlined'
           error={errors.brand?.message}
@@ -33,7 +33,7 @@ const GeneralInformationSection = ({ control, errors }: GeneralInfoSectionProps)
         <InputTextForm
           control={control}
           name='description'
-          label='Mô tả'
+          label='Description'
           sx={{ width: '90%', margin: '20px 0 0 20px' }}
           variant='outlined'
           error={errors.description?.message}

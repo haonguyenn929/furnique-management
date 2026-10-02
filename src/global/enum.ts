@@ -55,24 +55,6 @@ export enum StaffRoles {
   ADMIN = 'ADMIN'
 }
 
-// export enum Priority {
-//   HIGH = 'CAO',
-//   MEDIUM = 'T.BÌNH',
-//   LOW = 'THẤP'
-// }
-
-// export enum TaskType {
-//   SHIPPING = 'VẬN CHUYỂN',
-//   CONSULTANT = 'CỐ VẤN',
-//   CHORE = 'LAO CÔNG'
-// }
-
-// export enum TaskStatus {
-//   PENDING = 'CHỜ XỬ LÝ',
-//   IN_PROGRESS = 'ĐANG XỬ LÝ',
-//   COMPLETED = 'HOÀN THÀNH',
-//   DELETED = 'ĐÃ XÓA'
-// }
 
 export enum Priority {
   HIGH = 'HIGH',

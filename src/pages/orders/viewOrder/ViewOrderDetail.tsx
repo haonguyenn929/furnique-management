@@ -82,7 +82,7 @@ const ViewOrderDetail = () => {
       const orderDetailData = await getOrderById(orderId, user?.role || '')
       setOrderData(orderDetailData)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -100,7 +100,7 @@ const ViewOrderDetail = () => {
       })
       setDeliveryStaffList(data)
     } catch (error) {
-      notifyError('Có lỗi xảy ra!!!')
+      notifyError('An error occurred!')
     } finally {
       setIsLoading(false)
     }
@@ -147,7 +147,7 @@ const ViewOrderDetail = () => {
             ) : null}
             <SecondaryButton
               variant='contained'
-              name='Trở về'
+              name='Back'
               color='var(--gray-light-color)'
               icon={<ArrowBackIcon />}
               onClick={handleBackButton}
@@ -157,7 +157,7 @@ const ViewOrderDetail = () => {
           <OrderInformation>
             <OrderContent>
               <TitleWrapper>
-                <TitleText>Đơn hàng #{orderData && handleOrderNumber(orderData?._id)}</TitleText>
+                <TitleText>Order #{orderData && handleOrderNumber(orderData?._id)}</TitleText>
                 {orderData?.orderStatus === OrderStatus.COMPLETED ? null : (
                   <>
                     {user?.role === StaffRoles.DELIVERY_STAFF ? (
@@ -168,7 +168,7 @@ const ViewOrderDetail = () => {
                           onClick={handleProgressButton}
                           disabled={orderData?.orderStatus === OrderStatus.DELIVERING}
                         >
-                          G.hàng
+                          Deliver
                         </Button>
                         <Button
                           type='button'
@@ -177,14 +177,14 @@ const ViewOrderDetail = () => {
                           onClick={handleCompleteButton}
                           disabled={orderData?.orderStatus === OrderStatus.CONFIRMED}
                         >
-                          Hoàn thành
+                          Complete
                         </Button>
                       </Box>
                     ) : (
                       <div>
                         <CancelButton
                           variant='contained'
-                          name='Hủy'
+                          name='Cancel'
                           type='button'
                           sx={{ height: '30px', marginRight: '10px' }}
                           onClick={handleCancelButton}
@@ -195,7 +195,7 @@ const ViewOrderDetail = () => {
                         />
                         <AgreeButton
                           variant='contained'
-                          name='Xác nhận'
+                          name='Confirm'
                           type='button'
                           sx={{ height: '30px', marginRight: '10px' }}
                           onClick={handleConfirmButton}
@@ -214,7 +214,7 @@ const ViewOrderDetail = () => {
                   <IconWrapper>
                     <CalendarMonth sx={{ color: 'var(--primary-color)' }} />
                   </IconWrapper>
-                  <strong>Ngày tạo</strong>
+                  <strong>Created Date</strong>
                 </TextHeader>
                 {dayjs(orderData?.orderDate).format('hh:mm:ss DD/MM/YYYY')}
               </TextWrapper>
@@ -223,7 +223,7 @@ const ViewOrderDetail = () => {
                   <IconWrapper>
                     <LocalMallIcon sx={{ color: 'var(--primary-color)' }} />
                   </IconWrapper>
-                  <strong>Trạng thái đơn hàng</strong>
+                  <strong>Order Status</strong>
                 </TextHeader>
                 <StatusTextDiv status={orderData?.orderStatus || EMPTY} />
               </TextWrapper>
@@ -232,19 +232,19 @@ const ViewOrderDetail = () => {
                   <IconWrapper>
                     <ReceiptIcon sx={{ color: 'var(--primary-color)' }} />
                   </IconWrapper>
-                  <strong>Trạng thái giao dịch</strong>
+                  <strong>Transaction Status</strong>
                 </TextHeader>
                 <StatusTextDiv status={orderData?.transactionStatus || EMPTY} />
               </TextWrapper>
             </OrderContent>
             <CustomerInformation>
-              <TitleText>Khách hàng</TitleText>
+              <TitleText>Customer</TitleText>
               <TextWrapper>
                 <TextHeader>
                   <IconWrapper>
                     <PersonIcon sx={{ color: 'var(--primary-color)' }} />
                   </IconWrapper>
-                  <strong>Họ tên</strong>
+                  <strong>Full Name</strong>
                 </TextHeader>
                 {`${orderData?.customer.firstName} ${orderData?.customer.lastName}`}
               </TextWrapper>
@@ -262,20 +262,20 @@ const ViewOrderDetail = () => {
                   <IconWrapper>
                     <ContactPhoneIcon sx={{ color: 'var(--primary-color)' }} />
                   </IconWrapper>
-                  <strong>Điện thoại</strong>
+                  <strong>Phone</strong>
                 </TextHeader>
                 {orderData?.customer.phone}
               </TextWrapper>
             </CustomerInformation>
             <ShippingInformation>
-              <TitleText>Giao hàng</TitleText>
+              <TitleText>Shipping</TitleText>
               <TextWrapper>
                 <IconWrapper>
                   <LocationOnIcon sx={{ color: 'var(--primary-color)' }} />
                 </IconWrapper>
                 <div style={{ display: 'flex', flexDirection: 'column', width: 'calc(100% - 40px)' }}>
-                  <strong>Địa chỉ giao hàng</strong>
-                  Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, TP.Thủ Đức, TP.Hồ Chí Minh
+                  <strong>Sender Address</strong>
+                  Lot E2a-7, D1 Street, Long Thanh My Ward, Thu Duc City, Ho Chi Minh City
                 </div>
               </TextWrapper>
               <TextWrapper>
@@ -283,7 +283,7 @@ const ViewOrderDetail = () => {
                   <LocationOnIcon sx={{ color: 'var(--primary-color)' }} />
                 </IconWrapper>
                 <div style={{ display: 'flex', flexDirection: 'column', width: 'calc(100% - 40px)' }}>
-                  <strong>Địa chỉ nhận hàng</strong>
+                  <strong>Delivery Address</strong>
                   {orderData?.customer.shippingAddress}
                 </div>
               </TextWrapper>
@@ -291,12 +291,12 @@ const ViewOrderDetail = () => {
           </OrderInformation>
           <OrderList>
             <ListContent>
-              <TitleText>Danh sách đơn hàng</TitleText>
+              <TitleText>Order Items</TitleText>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
                 <OrderListTable />
                 <TotalWrapper>
                   <TextWrapper>
-                    <strong>Tổng cộng</strong>
+                    <strong>Total</strong>
                     <strong>{formatCurrency(orderData?.totalAmount ?? 0)}</strong>
                   </TextWrapper>
                 </TotalWrapper>
@@ -304,12 +304,12 @@ const ViewOrderDetail = () => {
             </ListContent>
             <NoteWrapper>
               <NoteInformation>
-                <TitleText>Lưu ý</TitleText>
+                <TitleText>Notes</TitleText>
                 <TextWrapper> {orderData?.notes}</TextWrapper>
               </NoteInformation>
               {orderData?.orderStatus === OrderStatus.CANCELED && (
                 <NoteInformation>
-                  <TitleText>Lý do hủy đơn</TitleText>
+                  <TitleText>Cancellation Reason</TitleText>
                   <TextWrapper> {orderData?.reason}</TextWrapper>
                 </NoteInformation>
               )}

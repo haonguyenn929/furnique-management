@@ -54,7 +54,7 @@ const LoginForm = () => {
       <InputTextForm
         control={control}
         name='password'
-        label='Mật khẩu'
+        label='Password'
         type='password'
         placeholder='••••••••'
         startIcon={<LockOutlined fontSize='small' />}
@@ -64,7 +64,7 @@ const LoginForm = () => {
       />
       <PrimaryButton
         type='submit'
-        name='Đăng nhập'
+        name='Login'
         variant='contained'
         sx={{
           width: '100%',

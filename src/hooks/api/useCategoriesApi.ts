@@ -22,7 +22,7 @@ const useCategoriesApi = () => {
         )
         return response.data
       } catch (error) {
-        notifyError('Có lỗi xảy ra')
+        notifyError('An error occurred')
       }
     },
     [callApi]
@@ -34,7 +34,7 @@ const useCategoriesApi = () => {
       const response = await callApi('get', endpoint)
       return response.data
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     }
   }, [callApi])
 
@@ -45,7 +45,7 @@ const useCategoriesApi = () => {
         const response = await callApi('get', endpoint)
         return response.data
       } catch (error) {
-        notifyError('Có lỗi xảy ra')
+        notifyError('An error occurred')
       }
     },
     [callApi]
@@ -59,7 +59,7 @@ const useCategoriesApi = () => {
         const response = await callApi('post', endpoint, {}, {}, data)
         return response
       } catch (error) {
-        notifyError('Có lỗi xảy ra')
+        notifyError('An error occurred')
       }
     },
     [callApi]
@@ -73,7 +73,7 @@ const useCategoriesApi = () => {
         const response = await callApi('put', endpoint, {}, {}, data)
         return response
       } catch (error) {
-        notifyError('Có lỗi xảy ra')
+        notifyError('An error occurred')
       }
     },
     [callApi]

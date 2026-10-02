@@ -36,7 +36,7 @@ const ViewStaffDetail = () => {
       const staffData = await getStaffById(staffId)
       setStaffData(staffData)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -55,14 +55,14 @@ const ViewStaffDetail = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Trở về'
+          name='Back'
           color='var(--gray-light-color)'
           icon={<ArrowBackIcon />}
           onClick={handleBackButton}
           type='button'
         />
         <PrimaryButton
-          name='Chỉnh sửa'
+          name='Edit'
           type='button'
           variant='contained'
           icon={<EditIcon />}
@@ -71,15 +71,15 @@ const ViewStaffDetail = () => {
       </ButtonWrapper>
       <Wrapper>
         <DetailThumbnailContainer>
-          <TitleText>Hình đại diện</TitleText>
+          <TitleText>Avatar</TitleText>
           <Image src={staffData?.avatar} alt={staffData?.firstName} />
         </DetailThumbnailContainer>
         <InformationContainer>
-          <TitleText>Thông tin chung</TitleText>
+          <TitleText>General Information</TitleText>
           <TextWrapper>
             <TextLeft>
               <Text>
-                <strong>Họ và tên: </strong>
+                <strong>Full Name: </strong>
                 {`${staffData?.lastName} ${staffData?.firstName}`}
               </Text>
               <Text>
@@ -87,29 +87,29 @@ const ViewStaffDetail = () => {
                 {staffData?.email}
               </Text>
               <Text>
-                <strong>Chức vụ: </strong>
+                <strong>Role: </strong>
                 {staffData?.role}
               </Text>
               <Text>
-                <strong>Ngày tạo: </strong>
+                <strong>Created Date: </strong>
                 {dayjs(staffData?.createdAt).format('hh:mm DD/MM/YYYY')}
               </Text>
             </TextLeft>
             <TextRight>
               <Text>
-                <strong>Mã nhân viên: </strong>
+                <strong>Staff Code: </strong>
                 {staffData?.staffCode}
               </Text>
               <Text>
-                <strong>Số điện thoại: </strong>
+                <strong>Phone Number: </strong>
                 {staffData?.phone}
               </Text>
               <Text>
-                <strong>Trạng thái: </strong>
+                <strong>Status: </strong>
                 {staffData?.status}
               </Text>
               <Text>
-                <strong>Ngày cập nhật: </strong>
+                <strong>Updated Date: </strong>
                 {dayjs(staffData?.updatedAt).format('hh:mm DD/MM/YYYY')}
               </Text>
             </TextRight>

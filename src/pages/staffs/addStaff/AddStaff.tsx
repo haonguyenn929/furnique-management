@@ -58,13 +58,13 @@ const AddStaff = () => {
     try {
       await uploadCloudinary(files, [publicId])
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     }
   }
 
   const handleAddStaffButton = async (data: IStaffsRequest) => {
     if (files.length <= 0) {
-      notifyError('Cần ít nhất một ảnh')
+      notifyError('At least one image is required')
       return
     } else {
       const publicId = v4()
@@ -77,7 +77,7 @@ const AddStaff = () => {
       const response = await createStaff(formData)
       if (response) {
         await uploadImage(publicId)
-        notifySuccess('Thêm nhân viên mới thành công')
+        notifySuccess('New staff added successfully')
         reset()
         setFiles([])
         navigate(ScreenPath.STAFFS)
@@ -98,13 +98,13 @@ const AddStaff = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Hủy'
+          name='Cancel'
           color='var(--gray-light-color)'
           icon={<CloseIcon />}
           onClick={handleCancelButton}
           type='button'
         />
-        <PrimaryButton name='Thêm nhân viên' type='submit' variant='contained' icon={<AddIcon />} />
+        <PrimaryButton name='Add Staff' type='submit' variant='contained' icon={<AddIcon />} />
       </ButtonWrapper>
       <Wrapper>
         <ThumbnailContainer>
@@ -143,17 +143,17 @@ const AddStaff = () => {
               'image/png': ['.png'],
               'image/jpeg': ['.jpg', '.jpeg']
             }}
-            title={`Kéo thả ảnh vào đây hoặc bấm thêm ảnh`}
-            buttonText='Tải lên'
+            title={`Drag and drop image here or click to browse`}
+            buttonText='Upload'
           />
         </ThumbnailContainer>
         <InformationContainer>
-          <TitleText>Thông tin chung</TitleText>
+          <TitleText>General Information</TitleText>
           <InputWrapper>
             <InputTextForm
               control={control}
               name='lastName'
-              label='Họ và tên đệm'
+              label='Last Name & Middle Name'
               sx={{ width: '22%', marginLeft: ' 20px' }}
               variant='outlined'
               error={errors.lastName?.message}
@@ -161,7 +161,7 @@ const AddStaff = () => {
             <InputTextForm
               control={control}
               name='firstName'
-              label='Tên'
+              label='First Name'
               sx={{ width: '22%', marginLeft: '20px' }}
               variant='outlined'
               error={errors.firstName?.message}
@@ -169,7 +169,7 @@ const AddStaff = () => {
             <InputTextForm
               control={control}
               name='staffCode'
-              label='Mã nhân viên'
+              label='Staff Code'
               sx={{ width: '22%', marginLeft: '20px' }}
               variant='outlined'
               error={errors.staffCode?.message}
@@ -187,14 +187,14 @@ const AddStaff = () => {
             <InputTextForm
               control={control}
               name='phone'
-              label='Số điện thoại'
+              label='Phone Number'
               sx={{ width: '34%', margin: '20px 0 0 20px' }}
               variant='outlined'
               error={errors.phone?.message}
             />
           </InputWrapper>
           <InputRadioForm
-            label='Chức vụ'
+            label='Role'
             name='role'
             options={roleValues}
             defaultValue={selectedValue}

@@ -40,10 +40,10 @@ const CancelOrderModal = ({ open, handleClose, orderId }: OrderModalProps) => {
   const handleCancelButton = (orderId: string) => async (data: ICancelOrderProps) => {
     try {
       await cancelOrder(orderId, data)
-      notifySuccess('Hủy đơn hàng thành công')
+      notifySuccess('Order cancelled successfully')
       navigate(ScreenPath.ORDERS)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       handleClose()
     }
@@ -69,12 +69,12 @@ const CancelOrderModal = ({ open, handleClose, orderId }: OrderModalProps) => {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id='transition-modal-title' variant='h6' component='h2' sx={{ marginBottom: '20px' }}>
-              Bạn có chắc chắn muốn hủy đơn hàng này?
+              Are you sure you want to cancel this order?
             </Typography>
             <InputTextForm
               control={control}
               name='reason'
-              label='Lý do hủy đơn hàng'
+              label='Cancellation Reason'
               multiline
               rows={4}
               variant='outlined'
@@ -83,12 +83,12 @@ const CancelOrderModal = ({ open, handleClose, orderId }: OrderModalProps) => {
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <SecondaryButton
                 variant='contained'
-                name='Hủy'
+                name='Cancel'
                 color='var(--gray-light-color)'
                 onClick={handleBackButton}
                 type='button'
               />
-              <CancelButton variant='outlined' name='Đồng ý' type='submit' />
+              <CancelButton variant='outlined' name='Confirm' type='submit' />
             </div>
           </Box>
         </Fade>

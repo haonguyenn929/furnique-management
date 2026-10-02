@@ -12,7 +12,7 @@ const Categories = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
       <PrimaryButton
-        name='Thêm phân loại'
+        name='Add Category'
         type='submit'
         onClick={handleAddButton}
         variant='contained'

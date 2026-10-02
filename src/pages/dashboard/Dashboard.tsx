@@ -29,7 +29,7 @@ const Dashboard = () => {
   const [productData, setProductData] = useState<AnalyticsRespose>()
   const [selectedYear, setSelectedYear] = useState<number>(2024)
 
-  const [revenueData, setRevenueData] = useState([{ name: 'Tổng doanh thu', color: 'var(--primary-color)', value: [] }])
+  const [revenueData, setRevenueData] = useState([{ name: 'Total Revenue', color: 'var(--primary-color)', value: [] }])
 
   const { getOrderNumber, getSaleNumber, getCustomerNumber, getProductNumber, getSaleStatistic } = useDashboardApi()
 
@@ -54,7 +54,7 @@ const Dashboard = () => {
       const orderNumber = await getOrderNumber(PeriodType.MONTH)
       setOrderData(orderNumber)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -66,7 +66,7 @@ const Dashboard = () => {
       const orderNumber = await getOrderNumber(PeriodType.DAY)
       setDailyOrderData(orderNumber)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -78,7 +78,7 @@ const Dashboard = () => {
       const customerData = await getCustomerNumber(PeriodType.MONTH)
       setCustomerData(customerData)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -90,7 +90,7 @@ const Dashboard = () => {
       const saleData = await getSaleNumber(PeriodType.MONTH)
       setSaleData(saleData)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -102,7 +102,7 @@ const Dashboard = () => {
       const saleNumber = await getSaleNumber(PeriodType.DAY)
       setDailySaleData(saleNumber)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -114,7 +114,7 @@ const Dashboard = () => {
       const productData = await getProductNumber(PeriodType.MONTH)
       setProductData(productData)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -122,7 +122,7 @@ const Dashboard = () => {
 
   const getRevenueData = async (year: number) => {
     const response = await getSaleStatistic(year)
-    setRevenueData([{ name: 'Doanh thu', color: 'var(--primary-color)', value: response.statistic }])
+    setRevenueData([{ name: 'Revenue', color: 'var(--primary-color)', value: response.statistic }])
   }
 
   const handleYearChange = (value: Dayjs | null) => {
@@ -144,28 +144,28 @@ const Dashboard = () => {
           <AnalyticsWrapper>
             <ContentCard
               icon={<ShoppingBasketRoundedIcon sx={{ color: 'var(--primary-color)', fontSize: '30px' }} />}
-              title='Tổng đơn hàng'
+              title='Total Orders'
               percentage={orderData?.percent ?? 0}
               numberReport={formatNumber(orderData?.total ?? 0)}
               status={(orderData && orderData?.percent > 0) ?? false}
             />
             <ContentCard
               icon={<ShoppingCartRoundedIcon sx={{ color: 'var(--primary-color)', fontSize: '30px' }} />}
-              title='Tổng doanh thu'
+              title='Total Revenue'
               percentage={saleData?.percent ?? 0}
               numberReport={formatCurrency(saleData?.total ?? 0)}
               status={(saleData && saleData?.percent > 0) ?? false}
             />
             <ContentCard
               icon={<SellRoundedIcon sx={{ color: 'var(--primary-color)', fontSize: '30px' }} />}
-              title='Tổng sản phẩm'
+              title='Total Products'
               percentage={productData?.percent ?? 0}
               numberReport={formatNumber(productData?.total ?? 0)}
               status={(productData && productData?.percent > 0) ?? false}
             />
             <ContentCard
               icon={<PeopleAltRoundedIcon sx={{ color: 'var(--primary-color)', fontSize: '30px' }} />}
-              title='Tổng khách hàng'
+              title='Total Customers'
               percentage={customerData?.percent ?? 0}
               numberReport={formatNumber(customerData?.total ?? 0)}
               status={(customerData && customerData?.percent > 0) ?? false}
@@ -174,7 +174,7 @@ const Dashboard = () => {
           <AnalyticsWrapper>
             <ChartWrapper>
               <TitleWrapper>
-                <Typography variant='h5'>Doanh thu</Typography>
+                <Typography variant='h5'>Revenue</Typography>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                     views={['year']}
@@ -187,14 +187,14 @@ const Dashboard = () => {
               <RevenueChart items={revenueData} />
             </ChartWrapper>
             <DailyWrapper>
-              <Typography variant='h5'>Hôm nay</Typography>
+              <Typography variant='h5'>Today</Typography>
               <DailyCardWrapper>
                 <IconWrapper>
                   <ShoppingBasketRoundedIcon sx={{ color: 'var(--primary-color)', fontSize: '30px' }} />
                 </IconWrapper>
                 <div style={{ display: 'flex', flexDirection: 'column', width: 'calc(100% - 80px)' }}>
                   <Typography variant='h6' sx={{ fontWeight: 500 }}>
-                    Tổng đơn hàng
+                    Total Orders
                   </Typography>
                   {dailyOrderData?.total}
                 </div>
@@ -205,7 +205,7 @@ const Dashboard = () => {
                 </IconWrapper>
                 <div style={{ display: 'flex', flexDirection: 'column', width: 'calc(100% - 80px)' }}>
                   <Typography variant='h6' sx={{ fontWeight: 500 }}>
-                    Tổng doanh thu
+                    Total Revenue
                   </Typography>
                   {formatCurrency(dailySaleData?.total ?? 0)}
                 </div>

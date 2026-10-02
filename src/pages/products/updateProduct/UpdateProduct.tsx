@@ -174,7 +174,7 @@ const UpdateProduct = () => {
 
       reset(transformedProduct)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -184,7 +184,7 @@ const UpdateProduct = () => {
     try {
       await uploadCloudinary(files, publicIds)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     }
   }
 
@@ -235,11 +235,11 @@ const UpdateProduct = () => {
   const handleUpdateProductButton = async (data: IProductsProps) => {
     if (!productId) return
     if (selectedCategories.length === 0) {
-      notifyError('Vui lòng chọn ít nhất 1 danh mục cho sản phẩm')
+      notifyError('Please select at least 1 category for the product')
       return
     }
     if (files.length + data.images.length <= 0) {
-      notifyError('Cần ít nhất một ảnh')
+      notifyError('At least one image is required')
       return
     } else {
       const imageList: string[] = []
@@ -277,11 +277,11 @@ const UpdateProduct = () => {
           reset()
           setFiles([])
           setSelectedCategories([])
-          notifySuccess('Cập nhật thành công')
+          notifySuccess('Updated successfully')
           navigate(ScreenPath.PRODUCTS)
         }
       } catch (error) {
-        notifyError('Có lỗi xảy ra khi cập nhật sản phẩm')
+        notifyError('An error occurred while updating product')
       }
     }
   }
@@ -297,13 +297,13 @@ const UpdateProduct = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Hủy'
+          name='Cancel'
           color='var(--gray-light-color)'
           icon={<CloseIcon />}
           onClick={handleCancelButton}
           type='button'
         />
-        <PrimaryButton name='Cập nhật' type='submit' variant='contained' icon={<Edit />} />
+        <PrimaryButton name='Update' type='submit' variant='contained' icon={<Edit />} />
       </ButtonWrapper>
       <Wrapper>
         <GeneralContainer>
@@ -335,7 +335,7 @@ const UpdateProduct = () => {
                       })
                     }}
                   >
-                    Xóa ảnh
+                    Delete Image
                   </Button>
                 </Items>
               </ImageListItem>
@@ -356,7 +356,7 @@ const UpdateProduct = () => {
                 })
               }}
             >
-              Xóa ảnh 3D
+              Delete 3D Model
             </Button>
           ) : null}
           <Controller
@@ -364,7 +364,7 @@ const UpdateProduct = () => {
             name='arPlacement'
             render={({ field }) => (
               <FormControl {...field} sx={{ ml: 4 }}>
-                <FormLabel>Loại model</FormLabel>
+                <FormLabel>Model Type</FormLabel>
                 <RadioGroup
                   aria-labelledby='demo-radio-buttons-group-label'
                   defaultValue={control._defaultValues.arPlacement}

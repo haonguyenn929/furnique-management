@@ -82,7 +82,7 @@ const UpdateStaff = () => {
         role: staffData.role
       })
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -92,7 +92,7 @@ const UpdateStaff = () => {
     try {
       await uploadCloudinary(files, [publicId])
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     }
   }
 
@@ -113,7 +113,7 @@ const UpdateStaff = () => {
     const publicId = v4()
     if (staffId) {
       if (!hasChanges()) {
-        notifyInfo('Không có thay đổi')
+        notifyInfo('No changes made')
         return
       }
 
@@ -132,10 +132,10 @@ const UpdateStaff = () => {
       )
       if (response && files.length > 0) {
         await uploadImage(publicId)
-        notifySuccess('Cập nhật thành công')
+        notifySuccess('Updated successfully')
         navigate(ScreenPath.STAFFS)
       } else if (response) {
-        notifySuccess('Cập nhật thành công')
+        notifySuccess('Updated successfully')
         navigate(ScreenPath.STAFFS)
       }
     }
@@ -164,14 +164,14 @@ const UpdateStaff = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Hủy'
+          name='Cancel'
           color='var(--gray-light-color)'
           icon={<CloseIcon />}
           onClick={handleCancelButton}
           type='button'
         />
         <CancelButton
-          name='Vô hiệu hóa'
+          name='Deactivate'
           type='button'
           variant='contained'
           icon={<BlockIcon />}
@@ -179,7 +179,7 @@ const UpdateStaff = () => {
           disable={staffData?.status === StaffStatus.INACTIVE}
         />
         <PrimaryButton
-          name='Cập nhật'
+          name='Update'
           type='submit'
           variant='contained'
           icon={<EditIcon />}
@@ -188,7 +188,7 @@ const UpdateStaff = () => {
       </ButtonWrapper>
       <Wrapper>
         <DetailThumbnailContainer>
-          <TitleText>Hình ảnh</TitleText>
+          <TitleText>Avatar</TitleText>
           <UpdateImage src={staffData?.avatar} />
           <FileUpload
             sx={{
@@ -228,16 +228,16 @@ const UpdateStaff = () => {
               'image/png': ['.png'],
               'image/jpeg': ['.jpg', '.jpeg']
             }}
-            buttonText='Thay đổi ảnh'
+            buttonText='Change Image'
           />
         </DetailThumbnailContainer>
         <InformationContainer>
-          <TitleText>Thông tin chung</TitleText>
+          <TitleText>General Information</TitleText>
           <InputWrapper>
             <InputTextForm
               control={control}
               name='lastName'
-              label='Họ và tên đệm'
+              label='Last Name & Middle Name'
               sx={{ width: '22%', marginLeft: ' 20px' }}
               variant='outlined'
               error={errors.lastName?.message}
@@ -245,7 +245,7 @@ const UpdateStaff = () => {
             <InputTextForm
               control={control}
               name='firstName'
-              label='Tên'
+              label='First Name'
               sx={{ width: '22%', marginLeft: '20px' }}
               variant='outlined'
               error={errors.firstName?.message}
@@ -253,7 +253,7 @@ const UpdateStaff = () => {
             <InputTextForm
               control={control}
               name='staffCode'
-              label='Mã nhân viên'
+              label='Staff Code'
               sx={{ width: '22%', marginLeft: '20px' }}
               variant='outlined'
               error={errors.staffCode?.message}
@@ -273,14 +273,14 @@ const UpdateStaff = () => {
             <InputTextForm
               control={control}
               name='phone'
-              label='Số điện thoại'
+              label='Phone Number'
               sx={{ width: '34%', margin: '20px 0 0 20px' }}
               variant='outlined'
               error={errors.phone?.message}
             />
           </InputWrapper>
           <InputRadioForm
-            label='Chức vụ'
+            label='Role'
             name='role'
             options={roleValues}
             defaultValue={selectedValue}

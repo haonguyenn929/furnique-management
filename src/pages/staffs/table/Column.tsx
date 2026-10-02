@@ -8,7 +8,7 @@ import { ColumnProps } from '~/global/interfaces/interface'
 export const staffsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
-    headerName: 'STT',
+    headerName: 'No.',
     width: 50,
     filterable: false,
     sortable: false,
@@ -22,36 +22,36 @@ export const staffsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'staffCode',
-    headerName: 'Mã nhân viên',
+    headerName: 'Staff Code',
     width: 150,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'lastName',
-    headerName: 'Họ',
+    headerName: 'Last Name',
     width: 130,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'firstName',
-    headerName: 'Tên',
+    headerName: 'First Name',
     width: 130,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   { field: 'email', headerName: 'Email', width: 220 },
-  { field: 'phone', headerName: 'Số điện thoại', width: 150 },
-  { field: 'status', headerName: 'Trạng thái', width: 120 },
+  { field: 'phone', headerName: 'Phone Number', width: 150 },
+  { field: 'status', headerName: 'Status', width: 120 },
   {
     field: 'role',
-    headerName: 'Chức vụ',
+    headerName: 'Role',
     width: 180
   },
   {
     field: 'actions',
-    headerName: 'Thao tác',
+    headerName: 'Actions',
     width: 150,
     sortable: false,
     filterable: false,

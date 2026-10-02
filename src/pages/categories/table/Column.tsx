@@ -9,7 +9,7 @@ import { ColumnProps } from '~/global/interfaces/interface'
 export const categoriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
-    headerName: 'STT',
+    headerName: 'No.',
     width: 100,
     filterable: false,
     sortable: false,
@@ -23,20 +23,20 @@ export const categoriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'name',
-    headerName: 'Tên phân loại',
+    headerName: 'Category Name',
     width: 425,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'description',
-    headerName: 'Mô tả',
+    headerName: 'Description',
     width: 550,
     filterable: false
   },
   {
     field: 'actions',
-    headerName: 'Thao tác',
+    headerName: 'Actions',
     width: 200,
     sortable: false,
     filterable: false,

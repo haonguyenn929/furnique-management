@@ -8,7 +8,7 @@ import StatusTextDiv from './StatusTextDiv'
 export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
-    headerName: 'STT',
+    headerName: 'No.',
     width: 50,
     filterable: false,
     sortable: false,
@@ -20,10 +20,10 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
       return page * pageSize + rowIndex + 1
     }
   },
-  { field: 'customer', headerName: 'Khách hàng', width: 180 },
+  { field: 'customer', headerName: 'Customer', width: 180 },
   {
     field: 'orderDate',
-    headerName: 'Ngày đặt',
+    headerName: 'Order Date',
     type: 'date',
     width: 130,
     valueGetter: (value) => {
@@ -35,14 +35,14 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'totalAmount',
-    headerName: 'Tổng cộng',
+    headerName: 'Total Amount',
     headerAlign: 'right',
     type: 'number',
     width: 180
   },
   {
     field: 'transactionStatus',
-    headerName: 'Trạng thái giao dịch',
+    headerName: 'Transaction Status',
     width: 180,
     headerAlign: 'center',
     align: 'center',
@@ -50,7 +50,7 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'orderStatus',
-    headerName: 'Trạng thái đơn hàng',
+    headerName: 'Order Status',
     width: 180,
     headerAlign: 'center',
     align: 'center',
@@ -58,13 +58,13 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'notes',
-    headerName: 'Lưu ý',
+    headerName: 'Notes',
     width: 280,
     filterable: false
   },
   {
     field: 'actions',
-    headerName: 'Thao tác',
+    headerName: 'Actions',
     width: 100,
     sortable: false,
     filterable: false,

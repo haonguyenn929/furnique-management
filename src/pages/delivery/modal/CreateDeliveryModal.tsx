@@ -86,7 +86,7 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
     <>
       <PrimaryButton
         onClick={() => handleOpen()}
-        name='Giao hàng'
+        name='Assign Delivery'
         type='submit'
         variant='contained'
         icon={<LocalShipping />}
@@ -99,10 +99,10 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
       >
         <Box sx={modalStyle}>
           <Typography id='modal-modal-title' variant='h5' component='h2' sx={{ mb: 2 }}>
-            Giao hàng
+            Assign Delivery
           </Typography>
           <form onSubmit={handleSubmit(submit)}>
-            <InputTextForm required sx={{ my: 2 }} control={control} name='title' variant='standard' label='Tiêu đề' />
+            <InputTextForm required sx={{ my: 2 }} control={control} name='title' variant='standard' label='Title' />
             <InputTextForm
               required
               rows={3}
@@ -111,20 +111,20 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
               control={control}
               name='description'
               variant='standard'
-              label='Mô tả'
+              label='Description'
             />
             <Controller
               name='assigneeId'
               control={control}
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <FormControl sx={{ my: 2 }} fullWidth>
-                  <InputLabel id='assigneeId'>Nhân viên</InputLabel>
+                  <InputLabel id='assigneeId'>Staff</InputLabel>
                   <Select
                     required
                     labelId='assigneeId'
                     id='assigneeId'
                     value={value}
-                    label='Nhân viên'
+                    label='Staff'
                     onChange={onChange}
                     error={!!error}
                   >
@@ -142,13 +142,13 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
               control={control}
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <FormControl sx={{ my: 2 }} fullWidth>
-                  <InputLabel id='priority'>Độ ưu tiên</InputLabel>
+                  <InputLabel id='priority'>Priority</InputLabel>
                   <Select
                     required
                     labelId='priority'
                     id='priority'
                     value={value}
-                    label='Độ ưu tiên'
+                    label='Priority'
                     onChange={onChange}
                     error={!!error}
                   >
@@ -175,7 +175,7 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
                       value={value ? dayjs(value) : null}
                       disablePast
                       sx={{ width: '100%' }}
-                      label='Ngày bắt đầu'
+                      label='Start Date'
                       slotProps={{
                         textField: {
                           helperText: errors.startDate?.message || ''
@@ -198,7 +198,7 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
                       disablePast
                       minDate={startDate ?? undefined}
                       sx={{ width: '100%' }}
-                      label='Ngày kết thúc'
+                      label='Due Date'
                       slotProps={{
                         textField: {
                           helperText: errors.dueDate?.message || ''
@@ -210,7 +210,7 @@ const CreateDeliveryModal = ({ deliveryStaffList, orderId }: ICreateDeliveryModa
               )}
             />
             <Button type='submit' variant='contained'>
-              Tạo
+              Create
             </Button>
           </form>
         </Box>

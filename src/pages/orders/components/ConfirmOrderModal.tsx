@@ -24,10 +24,10 @@ const ConfirmOrderModal = ({ open, handleClose, orderId }: OrderModalProps) => {
   const handleConfirmButton = async (orderId: string) => {
     try {
       confirmOrder(orderId)
-      notifySuccess('Xác nhận đơn hàng thành công')
+      notifySuccess('Order confirmed successfully')
       navigate(ScreenPath.ORDERS)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       handleClose()
     }
@@ -52,17 +52,17 @@ const ConfirmOrderModal = ({ open, handleClose, orderId }: OrderModalProps) => {
       <Fade in={open}>
         <Box sx={style}>
           <Typography id='transition-modal-title' variant='h6' component='h2' sx={{ marginBottom: '20px' }}>
-            Bạn có chắc chắn muốn xác nhận đơn hàng này?
+            Are you sure you want to confirm this order?
           </Typography>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <SecondaryButton
               variant='contained'
-              name='Hủy'
+              name='Cancel'
               color='var(--gray-light-color)'
               onClick={handleBackButton}
               type='button'
             />
-            <AgreeButton variant='outlined' name='Đồng ý' type='button' onClick={() => handleConfirmButton(orderId)} />
+            <AgreeButton variant='outlined' name='Confirm' type='button' onClick={() => handleConfirmButton(orderId)} />
           </div>
         </Box>
       </Fade>

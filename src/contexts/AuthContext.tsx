@@ -88,12 +88,12 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
         name: decodedToken.name as string,
         sub: decodedToken.sub as string
       })
-      notifySuccess('Đăng nhập thành công')
+      notifySuccess('Login successful')
     } catch (error) {
       if (error instanceof AxiosError && error.response && error.response.data) {
         notifyError(error.response.data.message)
       } else {
-        notifyError('Lỗi!')
+        notifyError('Error!')
       }
     }
     setLoading(false)

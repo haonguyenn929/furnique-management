@@ -10,7 +10,7 @@ import { ColumnProps } from '~/global/interfaces/interface'
 export const productsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
-    headerName: 'STT',
+    headerName: 'No.',
     width: 50,
     filterable: false,
     sortable: false,
@@ -24,27 +24,27 @@ export const productsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'name',
-    headerName: 'Sản phẩm',
+    headerName: 'Product',
     width: 220,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
-  { field: 'categories', headerName: 'Phân loại', width: 180 },
-  { field: 'description', headerName: 'Mô tả', width: 280 },
+  { field: 'categories', headerName: 'Category', width: 180 },
+  { field: 'description', headerName: 'Description', width: 280 },
   {
     field: 'brand',
-    headerName: 'Hãng',
+    headerName: 'Brand',
     width: 100
   },
   {
     field: 'status',
-    headerName: 'Trạng thái',
+    headerName: 'Status',
     width: 150,
     renderCell: (param: GridRenderCellParams) => <StatusTextDiv status={param.row.status} />
   },
   {
     field: 'createdAt',
-    headerName: 'Ngày nhập',
+    headerName: 'Created Date',
     type: 'date',
     width: 120,
     valueGetter: (value) => {
@@ -56,7 +56,7 @@ export const productsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'actions',
-    headerName: 'Thao tác',
+    headerName: 'Actions',
     width: 200,
     sortable: false,
     filterable: false,

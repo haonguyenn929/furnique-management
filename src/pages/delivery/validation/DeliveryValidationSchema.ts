@@ -1,9 +1,9 @@
 import { string, object } from 'yup'
 export const deliveryValidationSchema = object().shape({
-  title: string().trim().required('Tiêu đề là bắt buộc'),
-  description: string().trim().required('Mô tả là bắt buộc'),
-  startDate: string().trim().required('Ngày bắt đầu là bắt buộc'),
-  dueDate: string().trim().required('Ngày kết thúc là bắt buộc'),
-  priority: string().trim().required('Độ ưu tiên là bắt buộc'),
-  assigneeId: string().trim().required('Tên nhân viên là bắt buộc')
+  title: string().trim().required('Title is required'),
+  description: string().trim().required('Description is required'),
+  startDate: string().trim().required('Start date is required'),
+  dueDate: string().trim().required('Due date is required'),
+  priority: string().trim().required('Priority is required'),
+  assigneeId: string().trim().required('Staff is required')
 })

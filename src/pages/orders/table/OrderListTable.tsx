@@ -28,7 +28,7 @@ const OrderListTable = () => {
       const mappedData = ordersData.items.map((item, index) => {
         const variant = item.product.variants.find((variant) => variant.sku === item.sku)
         if (!variant) {
-          throw new Error(`Không tìm thấy phân loại cho SKU ${item.sku}`)
+          throw new Error(`Variant not found for SKU ${item.sku}`)
         }
         let keyValueString = ''
         if (variant.keyValue) {

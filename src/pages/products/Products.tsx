@@ -12,7 +12,7 @@ const Products = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
       <PrimaryButton
-        name='Thêm sản phẩm'
+        name='Add Product'
         type='submit'
         onClick={handleAddButton}
         variant='contained'

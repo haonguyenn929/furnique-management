@@ -12,7 +12,7 @@ const Staffs = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
       <PrimaryButton
-        name='Thêm nhân viên'
+        name='Add Staff'
         type='submit'
         onClick={handleAddButton}
         variant='contained'

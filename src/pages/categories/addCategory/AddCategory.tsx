@@ -43,13 +43,13 @@ const AddCategory = () => {
     try {
       await uploadCloudinary(files, [publicId])
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     }
   }
 
   const handleAddCategoryButton = async () => {
     if (files.length <= 0) {
-      notifyError('Cần ít nhất một ảnh')
+      notifyError('At least one image is required')
       return
     } else {
       const publicId = v4()
@@ -62,7 +62,7 @@ const AddCategory = () => {
         await uploadImage(publicId)
         reset()
         setFiles([])
-        notifySuccess('Thêm thành công')
+        notifySuccess('Added successfully')
         navigate(ScreenPath.CATEGORIES)
       }
     }
@@ -76,17 +76,17 @@ const AddCategory = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Hủy'
+          name='Cancel'
           color='var(--gray-light-color)'
           icon={<CloseIcon />}
           onClick={handleCancelButton}
           type='button'
         />
-        <PrimaryButton name='Thêm phân loại' type='submit' variant='contained' icon={<AddIcon />} />
+        <PrimaryButton name='Add Category' type='submit' variant='contained' icon={<AddIcon />} />
       </ButtonWrapper>
       <Wrapper>
         <ThumbnailContainer>
-          <TitleText>Hình ảnh</TitleText>
+          <TitleText>Images</TitleText>
           <FileUpload
             sx={{
               width: '300px',
@@ -118,16 +118,16 @@ const AddCategory = () => {
             maxFiles={MAX_CATEGORY_IMAGE_FILES}
             maxSize={MAX_CATEGORY_IMAGE_FILES_SIZE}
             accept={{ 'image/png': ['.png'], 'image/jpeg': ['.jpg', '.jpeg'] }}
-            title={`Kéo thả ảnh vào đây hoặc bấm thêm ảnh`}
-            buttonText='Tải lên'
+            title={`Drag and drop image here or click to browse`}
+            buttonText='Upload'
           />
         </ThumbnailContainer>
         <InformationContainer>
-          <TitleText>Thông tin chung</TitleText>
+          <TitleText>General Information</TitleText>
           <InputTextForm
             control={control}
             name='name'
-            label='Tên phân loại'
+            label='Category Name'
             sx={{ width: '90%', marginLeft: ' 20px' }}
             variant='outlined'
             error={errors.name?.message}
@@ -135,7 +135,7 @@ const AddCategory = () => {
           <InputTextForm
             control={control}
             name='description'
-            label='Mô tả'
+            label='Description'
             sx={{ width: '90%', margin: '20px 0 0 20px' }}
             variant='outlined'
             error={errors.description?.message}

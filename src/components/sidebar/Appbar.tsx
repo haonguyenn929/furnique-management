@@ -56,9 +56,9 @@ const Appbar = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Thông tin</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Tài khoản</MenuItem>
-      <MenuItem onClick={logout}>Đăng xuất</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Account</MenuItem>
+      <MenuItem onClick={logout}>Logout</MenuItem>
     </Menu>
   )
 
@@ -118,7 +118,7 @@ const Appbar = () => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase placeholder='Tìm kiếm...' inputProps={{ 'aria-label': 'search' }} />
+            <StyledInputBase placeholder='Search...' inputProps={{ 'aria-label': 'search' }} />
           </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

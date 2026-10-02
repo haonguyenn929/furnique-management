@@ -66,7 +66,7 @@ const UpdateCategory = () => {
         description: categoryData.description
       })
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -76,7 +76,7 @@ const UpdateCategory = () => {
     try {
       await uploadCloudinary(files, [publicId])
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     }
   }
 
@@ -86,7 +86,7 @@ const UpdateCategory = () => {
     const hasChanges =
       categoryData?.name !== data.name || categoryData?.description !== data.description || files.length > 0
     if (!hasChanges) {
-      notifyInfo('Không có thay đổi')
+      notifyInfo('No changes made')
       return
     }
 
@@ -100,7 +100,7 @@ const UpdateCategory = () => {
 
     if (response) {
       await uploadImage(publicId)
-      notifySuccess('Cập nhật thành công')
+      notifySuccess('Updated successfully')
       getCategoryById(categoryId)
       navigate(ScreenPath.CATEGORIES)
     }
@@ -115,17 +115,17 @@ const UpdateCategory = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Hủy'
+          name='Cancel'
           color='var(--gray-light-color)'
           icon={<CloseIcon />}
           onClick={handleCancelButton}
           type='button'
         />
-        <PrimaryButton name='Cập nhật' type='submit' variant='contained' icon={<EditIcon />} />
+        <PrimaryButton name='Update' type='submit' variant='contained' icon={<EditIcon />} />
       </ButtonWrapper>
       <Wrapper>
         <DetailThumbnailContainer>
-          <TitleText>Hình ảnh</TitleText>
+          <TitleText>Images</TitleText>
           <UpdateImage src={categoryData?.image} />
           <FileUpload
             sx={{
@@ -161,15 +161,15 @@ const UpdateCategory = () => {
             maxFiles={MAX_CATEGORY_IMAGE_FILES}
             maxSize={MAX_CATEGORY_IMAGE_FILES_SIZE}
             accept={{ 'image/png': ['.png'], 'image/jpeg': ['.jpg', '.jpeg'] }}
-            buttonText='Thay đổi ảnh'
+            buttonText='Change Image'
           />
         </DetailThumbnailContainer>
         <InformationContainer>
-          <TitleText>Thông tin chung</TitleText>
+          <TitleText>General Information</TitleText>
           <InputTextForm
             control={control}
             name='name'
-            label='Tên phân loại'
+            label='Category Name'
             sx={{ width: '90%', marginLeft: ' 20px' }}
             variant='outlined'
             error={errors.name?.message}
@@ -177,7 +177,7 @@ const UpdateCategory = () => {
           <InputTextForm
             control={control}
             name='description'
-            label='Mô tả'
+            label='Description'
             sx={{ width: '90%', margin: '20px 0 0 20px' }}
             variant='outlined'
             error={errors.description?.message}

@@ -38,7 +38,7 @@ const TransactionTable = () => {
       setTransactionsRows(transactionsRows)
       setTotalRows(transactionsRows.totalDocs)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }

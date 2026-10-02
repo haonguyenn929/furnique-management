@@ -25,12 +25,12 @@ const CategoriesSection = ({
   return (
     <>
       <CategoryContainer>
-        <TitleText>Danh mục</TitleText>
+        <TitleText>Categories</TitleText>
         <InputCheckboxForm
           control={control}
           name='categories'
           options={categoriesOptions}
-          label='Phân loại sản phẩm'
+          label='Product Category'
           onSelectionChange={handleCategoriesSelect}
           defaultValues={defaultValues}
         />

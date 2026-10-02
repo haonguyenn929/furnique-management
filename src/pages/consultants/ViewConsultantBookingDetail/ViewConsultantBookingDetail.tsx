@@ -42,7 +42,7 @@ const ViewConsultantBookingDetail = () => {
       const data = await getConsultantBookingById(consultantBookingId)
       setConsultantBookingData(data)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -58,7 +58,7 @@ const ViewConsultantBookingDetail = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Trở về'
+          name='Back'
           color='var(--gray-light-color)'
           icon={<ArrowBackIcon />}
           onClick={handleBackButton}
@@ -67,37 +67,37 @@ const ViewConsultantBookingDetail = () => {
       </ButtonWrapper>
       <Wrapper>
         <InformationContainer>
-          <TitleText>Thông tin đặt tư vấn thiết kế</TitleText>
+          <TitleText>Design Consultation Booking Information</TitleText>
           <TextWrapper>
             <TextHeader>
-              <strong>Ngày đặt:</strong>
+              <strong>Booking Date:</strong>
             </TextHeader>
             {dayjs(consultantBookingData?.bookingDate).format('hh:mm DD/MM/YYYY')}
           </TextWrapper>
           <TextWrapper>
             <TextHeader>
-              <strong>Trạng thái:</strong>
+              <strong>Status:</strong>
             </TextHeader>
             <Chip status={consultantBookingData?.bookingStatus || EMPTY} />
           </TextWrapper>
           <TextWrapper>
             <TextHeader>
-              <strong>Phân loại quan tâm:</strong>
+              <strong>Interested Categories:</strong>
             </TextHeader>
             <TextRight>{consultantBookingData?.interestedCategories?.map((cate) => cate.name).join(', ')}</TextRight>
           </TextWrapper>
         </InformationContainer>
         <InformationContainer>
-          <TitleText>Nhân viên tư vấn</TitleText>
+          <TitleText>Consultant Staff</TitleText>
           <TextWrapper>
             <TextHeader>
-              <strong>Họ và tên:</strong>
+              <strong>Full Name:</strong>
             </TextHeader>
             {`${consultantBookingData?.consultant.lastName} ${consultantBookingData?.consultant.firstName}`}
           </TextWrapper>
           <TextWrapper>
             <TextHeader>
-              <strong>Mã nhân viên:</strong>
+              <strong>Staff Code:</strong>
             </TextHeader>
             {consultantBookingData?.consultant.staffCode}
           </TextWrapper>
@@ -109,10 +109,10 @@ const ViewConsultantBookingDetail = () => {
           </TextWrapper>
         </InformationContainer>
         <InformationContainer>
-          <TitleText>Khách hàng</TitleText>
+          <TitleText>Customer</TitleText>
           <TextWrapper>
             <TextHeader>
-              <strong>Họ và tên:</strong>
+              <strong>Full Name:</strong>
             </TextHeader>
             {`${consultantBookingData?.customer.lastName} ${consultantBookingData?.customer.firstName}`}
           </TextWrapper>
@@ -124,13 +124,13 @@ const ViewConsultantBookingDetail = () => {
           </TextWrapper>
           <TextWrapper>
             <TextHeader>
-              <strong>Điện thoại:</strong>
+              <strong>Phone:</strong>
             </TextHeader>
             {consultantBookingData?.customer.phone}
           </TextWrapper>
         </InformationContainer>
         <InformationContainer>
-          <TitleText>Lưu ý</TitleText>
+          <TitleText>Notes</TitleText>
           <TextWrapper>
             <TextLeft>{consultantBookingData?.notes}</TextLeft>
           </TextWrapper>

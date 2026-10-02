@@ -21,11 +21,11 @@ const useCloudinaryApi = () => {
           headers: headers
         })
         if (!response.ok) {
-          notifyError('Lỗi khi upload ảnh')
+          notifyError('Error uploading image')
           return
         }
       } catch (error) {
-        notifyError('Có lỗi xảy ra')
+        notifyError('An error occurred')
       }
     }
   }, [])

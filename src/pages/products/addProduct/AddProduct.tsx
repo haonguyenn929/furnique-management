@@ -116,18 +116,18 @@ const AddProduct = () => {
     try {
       await uploadCloudinary(files, publicIds)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     }
   }
 
   const handleAddProductButton = async (data: IProductsProps) => {
     if (selectedCategories.length === 0) {
-      notifyError('Vui lòng chọn ít nhất 1 danh mục cho sản phẩm')
+      notifyError('Please select at least 1 category for the product')
       return
     }
 
     if (files.length <= 0) {
-      notifyError('Cần ít nhất một ảnh')
+      notifyError('At least one image is required')
       return
     } else {
       const imageList: string[] = []
@@ -164,11 +164,11 @@ const AddProduct = () => {
           reset()
           setFiles([])
           setSelectedCategories([])
-          notifySuccess('Thêm thành công')
+          notifySuccess('Added successfully')
           navigate(ScreenPath.PRODUCTS)
         }
       } catch (error) {
-        notifyError('Có lỗi xảy ra khi thêm sản phẩm')
+        notifyError('An error occurred while adding product')
       }
     }
   }
@@ -226,13 +226,13 @@ const AddProduct = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Hủy'
+          name='Cancel'
           color='var(--gray-light-color)'
           icon={<CloseIcon />}
           onClick={handleCancelButton}
           type='button'
         />
-        <PrimaryButton name='Thêm sản phẩm' type='submit' variant='contained' icon={<AddIcon />} />
+        <PrimaryButton name='Add Product' type='submit' variant='contained' icon={<AddIcon />} />
       </ButtonWrapper>
       <Wrapper>
         <GeneralContainer>
@@ -255,7 +255,7 @@ const AddProduct = () => {
             name='arPlacement'
             render={({ field }) => (
               <FormControl {...field} sx={{ ml: 4 }}>
-                <FormLabel>Loại model</FormLabel>
+                <FormLabel>Model Type</FormLabel>
                 <RadioGroup
                   aria-labelledby='demo-radio-buttons-group-label'
                   defaultValue='female'

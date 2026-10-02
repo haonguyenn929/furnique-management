@@ -8,7 +8,7 @@ import { ColumnProps } from '~/global/interfaces/interface'
 export const deliveriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
-    headerName: 'STT',
+    headerName: 'No.',
     width: 80,
     filterable: false,
     sortable: false,
@@ -22,35 +22,35 @@ export const deliveriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'title',
-    headerName: 'Tên công việc',
+    headerName: 'Task Title',
     width: 210,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'assignee',
-    headerName: 'Người thực hiện',
+    headerName: 'Assignee',
     width: 180,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'reporter',
-    headerName: 'Người giao việc',
+    headerName: 'Reporter',
     width: 200,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'dueDate',
-    headerName: 'Ngày hết hạn',
+    headerName: 'Due Date',
     width: 175,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'priority',
-    headerName: 'Độ ưu tiên',
+    headerName: 'Priority',
     width: 150,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
@@ -58,7 +58,7 @@ export const deliveriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'status',
-    headerName: 'Trạng thái',
+    headerName: 'Status',
     width: 150,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
@@ -66,7 +66,7 @@ export const deliveriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   },
   {
     field: 'actions',
-    headerName: 'Thao tác',
+    headerName: 'Actions',
     width: 150,
     sortable: false,
     filterable: false,

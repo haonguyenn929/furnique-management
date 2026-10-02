@@ -4,7 +4,7 @@ import StatusTextDiv from '~/pages/orders/table/StatusTextDiv'
 export const transactionsColumn: GridColDef[] = [
   {
     field: 'id',
-    headerName: 'STT',
+    headerName: 'No.',
     width: 100,
     filterable: false,
     sortable: false,
@@ -18,7 +18,7 @@ export const transactionsColumn: GridColDef[] = [
   },
   {
     field: 'orderInfo',
-    headerName: 'Tên giao dịch',
+    headerName: 'Transaction Details',
     width: 450,
     filterable: false,
     valueGetter: (_value, row) => {
@@ -28,14 +28,14 @@ export const transactionsColumn: GridColDef[] = [
   },
   {
     field: 'paymentMethod',
-    headerName: 'Phương thức thanh toán',
+    headerName: 'Payment Method',
     width: 300,
     filterable: false,
     sortable: false
   },
   {
     field: 'amount',
-    headerName: 'Số tiền',
+    headerName: 'Amount',
     width: 250,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
@@ -49,7 +49,7 @@ export const transactionsColumn: GridColDef[] = [
   },
   {
     field: 'transactionStatus',
-    headerName: 'Trạng thái giao dịch',
+    headerName: 'Transaction Status',
     width: 300,
     renderCell: (param: GridRenderCellParams) => <StatusTextDiv status={param.row.transactionStatus} />
   }

@@ -1,17 +1,17 @@
 import { array, lazy, number, object, string } from 'yup'
 
 const variantSchema = object().shape({
-  sku: string().required('SKU là bắt buộc'),
-  price: number().typeError('Giá phải là số').positive('Giá phải lớn hơn 0').required('Giá là bắt buộc'),
+  sku: string().required('SKU is required'),
+  price: number().typeError('Price must be a number').positive('Price must be greater than 0').required('Price is required'),
   quantity: number()
-    .typeError('Số lượng phải là số')
-    .positive('Số lượng phải lớn hơn 0')
-    .required('Số lượng là bắt buộc'),
+    .typeError('Quantity must be a number')
+    .positive('Quantity must be greater than 0')
+    .required('Quantity is required'),
   dimensions: object()
     .shape({
-      length: number().typeError('Chiều dài phải là số').positive('Chiều dài phải lớn hơn 0').required(),
-      height: number().typeError('Chiều cao phải là số').positive('Chiều cao phải lớn hơn 0').required(),
-      width: number().typeError('Chiều rộng phải là số').positive('Chiều rộng phải lớn hơn 0').required()
+      length: number().typeError('Length must be a number').positive('Length must be greater than 0').required(),
+      height: number().typeError('Height must be a number').positive('Height must be greater than 0').required(),
+      width: number().typeError('Width must be a number').positive('Width must be greater than 0').required()
     })
     .required(),
   keyValue: lazy((obj) =>
@@ -19,8 +19,8 @@ const variantSchema = object().shape({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       Object.keys(obj).reduce((acc: Record<string, any>, key: string) => {
         acc[key] = object().shape({
-          key: string().trim().required('Thuộc tính là bắt buộc'),
-          value: string().trim().required('Giá trị của thuộc tính là bắt buộc')
+          key: string().trim().required('Attribute is required'),
+          value: string().trim().required('Attribute value is required')
         })
         return acc
       }, {})
@@ -29,10 +29,10 @@ const variantSchema = object().shape({
 })
 
 export const updateProductValidationSchema = object().shape({
-  name: string().trim().required('Tên sản phẩm là bắt buộc'),
-  description: string().trim().required('Mô tả là bắt buộc'),
-  images: array().of(string().required()).required('Cần có ít nhất 1 ảnh'),
-  brand: string().trim().required('Thương hiệu là bắt buộc'),
-  variants: array().of(variantSchema).required('Phân loại là bắt buộc'),
-  categories: array().of(string().required()).required('Danh mục là bắt buộc')
+  name: string().trim().required('Product name is required'),
+  description: string().trim().required('Description is required'),
+  images: array().of(string().required()).required('At least 1 image is required'),
+  brand: string().trim().required('Brand is required'),
+  variants: array().of(variantSchema).required('Variant is required'),
+  categories: array().of(string().required()).required('Category is required')
 })

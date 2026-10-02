@@ -29,7 +29,7 @@ const DeleteProduct = () => {
       const product = await getProductById(productId)
       setProductData(product)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -39,9 +39,9 @@ const DeleteProduct = () => {
     setIsLoading(true)
     try {
       await deleteProductById(productId)
-      notifySuccess('Xóa thành công')
+      notifySuccess('Deleted successfully')
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       navigate(-1)
     }
@@ -60,7 +60,7 @@ const DeleteProduct = () => {
         py: 3
       }}
     >
-      <Typography>Bạn có chắc muốn xóa sản phẩm "{productData?.name}" không?</Typography>
+      <Typography>Are you sure you want to delete product "{productData?.name}"?</Typography>
       <div>
         <Button
           sx={{
@@ -74,7 +74,7 @@ const DeleteProduct = () => {
             else return
           }}
         >
-          Đồng ý
+          Confirm
         </Button>
         <Button
           sx={{
@@ -86,7 +86,7 @@ const DeleteProduct = () => {
             navigate(-1)
           }}
         >
-          Hủy
+          Cancel
         </Button>
       </div>
     </Card>

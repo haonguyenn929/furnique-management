@@ -13,7 +13,7 @@ const FileUploadSection = ({ files, setFiles, maxFiles, maxSize, is3D }: ImageUp
   return (
     <>
       <InformationContainer>
-        <TitleText>Hình ảnh{is3D ? ' 3D' : null}</TitleText>
+        <TitleText>{is3D ? '3D Model' : 'Images'}</TitleText>
         <FileUpload
           sx={{
             width: '88%',
@@ -55,8 +55,8 @@ const FileUploadSection = ({ files, setFiles, maxFiles, maxSize, is3D }: ImageUp
                   'image/jpeg': ['.jpg', '.jpeg']
                 }
           }
-          title={`Kéo thả ảnh vào đây hoặc bấm thêm ảnh`}
-          buttonText='Tải lên'
+          title={`Drag and drop files here or click to browse`}
+          buttonText='Upload'
         />
       </InformationContainer>
     </>

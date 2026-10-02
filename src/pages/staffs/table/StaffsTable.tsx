@@ -40,7 +40,7 @@ const StaffsTable = () => {
       setStaffsRow(staffsRows)
       setTotalRows(staffsData.totalDocs)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }

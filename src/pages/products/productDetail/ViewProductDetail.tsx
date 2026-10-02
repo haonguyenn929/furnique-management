@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Paper, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
-import Carousel from 'react-material-ui-carousel'
+import CarouselImport from 'react-material-ui-carousel'
+import type { ComponentProps, ComponentType } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loading from '~/components/loading/Loading'
 import { ScreenPath } from '~/global/enum'
@@ -12,6 +13,17 @@ import { ButtonWrapper, Image, Item } from './ViewProductDetail.styled'
 import { ArrowBack, Edit } from '@mui/icons-material'
 import SecondaryButton from '~/components/button/SecondaryButton'
 import PrimaryButton from '~/components/button/PrimaryButton'
+
+type CarouselProps = ComponentProps<typeof CarouselImport>
+
+const Carousel =
+  typeof CarouselImport === 'function'
+    ? CarouselImport
+    : (
+        CarouselImport as unknown as {
+          default: ComponentType<CarouselProps>
+        }
+      ).default
 
 const ViewProductDetail = () => {
   const navigate = useNavigate()
@@ -27,7 +39,7 @@ const ViewProductDetail = () => {
       const productData = await getProductById(productId)
       setProductData(productData)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -47,6 +59,8 @@ const ViewProductDetail = () => {
     productId ? navigate(ScreenPath.UPDATE_PRODUCT.replace(':productId', productId)) : navigate(ScreenPath.PRODUCTS)
   }
 
+  console.log('Carousel:', typeof Carousel, Carousel)
+
   return isLoading ? (
     <Loading />
   ) : (
@@ -63,14 +77,14 @@ const ViewProductDetail = () => {
         <ButtonWrapper>
           <SecondaryButton
             variant='contained'
-            name='Trở về'
+            name='Back'
             color='var(--gray-light-color)'
             icon={<ArrowBack />}
             onClick={handleBackButton}
             type='button'
           />
           <PrimaryButton
-            name='Chỉnh sửa'
+            name='Edit'
             type='button'
             variant='contained'
             icon={<Edit />}
@@ -89,48 +103,48 @@ const ViewProductDetail = () => {
               m: '0 auto'
             }}
           >
-            {productData?.images.map((value: string) => (
-              <Item>
-                <Image key={value} src={value} />
+            {(productData?.images ?? []).map((src: string) => (
+              <Item key={src}>
+                <Image src={src} />
               </Item>
             ))}
           </Carousel>
           <Box sx={{ width: '65%', p: 3 }}>
             <Typography variant='h5' sx={{ my: 2, fontWeight: 'bold' }}>
-              Thông tin chung
+              General Information
             </Typography>
             <Typography sx={{ my: 1 }} variant='body1'>
-              Mô tả: {productData?.description}
+              Description: {productData?.description}
             </Typography>
             <Typography sx={{ my: 1 }} variant='body1'>
-              Thương hiệu: {productData?.brand}
+              Brand: {productData?.brand}
             </Typography>
             <Typography sx={{ my: 1 }} variant='body1'>
               AR: {productData?.arPlacement}
             </Typography>
             {/* <Typography sx={{ my: 1 }} variant='body1'>
-              Ngày tạo: {productData?.createdAt}
+              Created Date: {productData?.createdAt}
             </Typography>
             <Typography sx={{ my: 1 }} variant='body1'>
-              Ngày cập nhật: {productData?.updatedAt}
+              Updated Date: {productData?.updatedAt}
             </Typography> */}
             {productData?.variants.map((value: IVariantDetail, index: number) => (
               <>
                 <Box>
                   <Typography variant='h5' sx={{ my: 2, fontWeight: 'bold' }}>
-                    Phân loại {index + 1}
+                    Variant {index + 1}
                   </Typography>
                   <Typography sx={{ my: 1 }} variant='body1'>
                     SKU: {value.sku}
                   </Typography>
                   <Typography sx={{ my: 1 }} variant='body1'>
-                    Số lượng: {value.quantity}
+                    Quantity: {value.quantity}
                   </Typography>
                   <Typography sx={{ my: 1 }} variant='body1'>
-                    Giá: {value.price.toLocaleString()}đ
+                    Price: {value.price.toLocaleString()} VND
                   </Typography>
                   <Typography sx={{ my: 1 }} variant='body1'>
-                    Kích thước: {value.dimensions.length}cm x {value.dimensions.width}cm x {value.dimensions.height}cm
+                    Dimensions: {value.dimensions.length}cm x {value.dimensions.width}cm x {value.dimensions.height}cm
                   </Typography>
                   <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start' }}>
                     <Box>

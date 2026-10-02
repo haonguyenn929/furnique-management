@@ -28,13 +28,13 @@ const VariantsSection = ({
   return (
     <>
       <InformationContainer>
-        <TitleText>Phân loại</TitleText>
+        <TitleText>Variants</TitleText>
         {fields.map((variant, variantIndex) => {
           const keyValueCount = Object.keys(variant.keyValue).length
           return (
             <div key={variantIndex}>
               <HeaderWrapper>
-                <h4 style={{ paddingLeft: '20px', margin: ZERO }}>Phân loại {variantIndex + ONE}</h4>
+                <h4 style={{ paddingLeft: '20px', margin: ZERO }}>Variant {variantIndex + ONE}</h4>
                 {variantIndex >= 1 && <CloseIcon onClick={() => handleRemoveVariantButton(variantIndex)} />}
               </HeaderWrapper>
               <div key={variantIndex} style={{ marginBottom: '20px' }}>
@@ -49,7 +49,7 @@ const VariantsSection = ({
                 <InputTextForm
                   control={control}
                   name={`variants[${variantIndex}].price`}
-                  label={`Giá ${variantIndex + ONE} (VND)`}
+                  label={`Price ${variantIndex + ONE} (VND)`}
                   sx={{ width: '30%', margin: '20px 0 0 20px' }}
                   variant='outlined'
                   error={errors.variants?.[variantIndex]?.price?.message}
@@ -57,7 +57,7 @@ const VariantsSection = ({
                 <InputTextForm
                   control={control}
                   name={`variants[${variantIndex}].quantity`}
-                  label={`Số lượng ${variantIndex + ONE} (Cái)`}
+                  label={`Quantity ${variantIndex + ONE} (Pcs)`}
                   sx={{ width: '30%', margin: '20px 0 0 20px' }}
                   variant='outlined'
                   error={errors.variants?.[variantIndex]?.quantity?.message}
@@ -65,7 +65,7 @@ const VariantsSection = ({
                 <InputTextForm
                   control={control}
                   name={`variants[${variantIndex}].dimensions.height`}
-                  label={`Chiều cao ${variantIndex + ONE} (cm)`}
+                  label={`Height ${variantIndex + ONE} (cm)`}
                   sx={{ width: '30%', margin: '20px 0 0 20px' }}
                   variant='outlined'
                   error={errors.variants?.[variantIndex]?.dimensions?.height?.message}
@@ -73,7 +73,7 @@ const VariantsSection = ({
                 <InputTextForm
                   control={control}
                   name={`variants[${variantIndex}].dimensions.width`}
-                  label={`Chiều rộng ${variantIndex + ONE} (cm)`}
+                  label={`Width ${variantIndex + ONE} (cm)`}
                   sx={{ width: '30%', margin: '20px 0 0 20px' }}
                   variant='outlined'
                   error={errors.variants?.[variantIndex]?.dimensions?.width?.message}
@@ -81,7 +81,7 @@ const VariantsSection = ({
                 <InputTextForm
                   control={control}
                   name={`variants[${variantIndex}].dimensions.length`}
-                  label={`Chiều dài ${variantIndex + ONE} (cm )`}
+                  label={`Length ${variantIndex + ONE} (cm)`}
                   sx={{ width: '30%', margin: '20px 0 0 20px' }}
                   variant='outlined'
                   error={errors.variants?.[variantIndex]?.dimensions?.length?.message}
@@ -89,7 +89,7 @@ const VariantsSection = ({
                 {keyValueCount < 2 && (
                   <PrimaryButton
                     variant='outlined'
-                    name='Thêm thuộc tính'
+                    name='Add Attribute'
                     type='button'
                     onClick={() => handleAddKeyButton(variantIndex)}
                   />
@@ -99,15 +99,15 @@ const VariantsSection = ({
                     <InputTextForm
                       control={control}
                       name={`variants[${variantIndex}].keyValue[${keyValueIndex}].key`}
-                      label={`Thuộc tính ${keyValueIndex + ONE}`}
+                      label={`Attribute ${keyValueIndex + ONE}`}
                       sx={{ width: '40%', margin: '10px 0 0 20px' }}
                       variant='outlined'
-                      placeholder='Màu sắc, chất liệu...'
+                      placeholder='Color, material...'
                     />
                     <InputTextForm
                       control={control}
                       name={`variants[${variantIndex}].keyValue[${keyValueIndex}].value`}
-                      label='Giá trị'
+                      label='Value'
                       variant={'outlined'}
                       sx={{ width: '40%', margin: '10px 0 0 20px' }}
                     />
@@ -126,7 +126,7 @@ const VariantsSection = ({
         {fields.length < 2 && (
           <PrimaryButton
             variant={'outlined'}
-            name={'Thêm phân loại'}
+            name={'Add Variant'}
             type={'button'}
             onClick={handleAddVariantsButton}
           />

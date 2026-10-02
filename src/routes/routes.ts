@@ -26,110 +26,110 @@ import VisitBooking from '~/pages/visit-booking/VisitBooking'
 export const publicRoutes = [{ path: '/', component: Login }]
 
 export const privateRoutes = [
-  { path: ScreenPath.DASHBOARD, component: Dashboard, title: 'Trang chủ' },
+  { path: ScreenPath.DASHBOARD, component: Dashboard, title: 'Dashboard' },
   {
     path: ScreenPath.CATEGORIES,
     component: Categories,
-    title: 'Phân loại'
+    title: 'Categories'
   },
   {
     path: ScreenPath.ADD_CATEGORIES,
     component: AddCategory,
-    title: 'Phân loại'
+    title: 'Categories'
   },
   {
     path: ScreenPath.VIEW_CATEGORY,
     component: ViewCategoryDetail,
-    title: 'Phân loại'
+    title: 'Categories'
   },
   {
     path: ScreenPath.UPDATE_CATEGORY,
     component: UpdateCategory,
-    title: 'Phân loại'
+    title: 'Categories'
   },
   {
     path: ScreenPath.PRODUCTS,
     component: Products,
-    title: 'Sản phẩm'
+    title: 'Products'
   },
   {
     path: ScreenPath.VIEW_PRODUCT,
     component: ViewProductDetail,
-    title: 'Sản phẩm'
+    title: 'Products'
   },
   {
     path: ScreenPath.ADD_PRODUCTS,
     component: AddProduct,
-    title: 'Sản phẩm'
+    title: 'Products'
   },
   {
     path: ScreenPath.UPDATE_PRODUCT,
     component: UpdateProduct,
-    title: 'Sản phẩm'
+    title: 'Products'
   },
   {
     path: ScreenPath.DELETE_PRODUCT,
     component: DeleteProduct,
-    title: 'Sản phẩm'
+    title: 'Products'
   },
   {
     path: ScreenPath.ORDERS,
     component: Orders,
-    title: 'Đơn hàng'
+    title: 'Orders'
   },
   {
     path: ScreenPath.VIEW_ORDER,
     component: ViewOrderDetail,
-    title: 'Đơn hàng'
+    title: 'Orders'
   },
   {
     path: ScreenPath.STAFFS,
     component: Staffs,
-    title: 'Nhân viên'
+    title: 'Staff'
   },
   {
     path: ScreenPath.ADD_STAFF,
     component: AddStaff,
-    title: 'Nhân viên'
+    title: 'Staff'
   },
   {
     path: ScreenPath.VIEW_STAFF,
     component: ViewStaffDetail,
-    title: 'Nhân viên'
+    title: 'Staff'
   },
   {
     path: ScreenPath.TASKS,
     component: Tasks,
-    title: 'Công việc'
+    title: 'Tasks'
   },
   {
     path: ScreenPath.UPDATE_STAFF,
     component: UpdateStaff,
-    title: 'Nhân viên'
+    title: 'Staff'
   },
   {
     path: ScreenPath.DELIVERY,
     component: Delivery,
-    title: 'Giao hàng'
+    title: 'Delivery'
   },
   {
     path: ScreenPath.TRANSACTIONS,
     component: Transactions,
-    title: 'Giao dịch'
+    title: 'Transactions'
   },
   {
     path: ScreenPath.CONSULTANT_BOOKING,
     component: Consultant,
-    title: 'Tư vấn'
+    title: 'Consultancy'
   },
   {
     path: ScreenPath.CONSULTANT_BOOKING_CUSTOMER_INFO,
     component: ViewConsultantBookingDetail,
-    title: 'Tư vấn'
+    title: 'Consultancy'
   },
   {
     path: ScreenPath.VISIT_BOOKING,
     component: VisitBooking,
-    title: 'Đến cửa hàng'
+    title: 'Showroom Visits'
   }
 ]

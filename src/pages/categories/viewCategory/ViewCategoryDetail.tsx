@@ -34,7 +34,7 @@ const ViewCategoryDetail = () => {
       const categoryData = await getCategoryById(categoryId)
       setCategoryData(categoryData)
     } catch (error) {
-      notifyError('Có lỗi xảy ra')
+      notifyError('An error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -52,14 +52,14 @@ const ViewCategoryDetail = () => {
       <ButtonWrapper>
         <SecondaryButton
           variant='contained'
-          name='Trở về'
+          name='Back'
           color='var(--gray-light-color)'
           icon={<ArrowBackIcon />}
           onClick={handleBackButton}
           type='button'
         />
         <PrimaryButton
-          name='Chỉnh sửa'
+          name='Edit'
           type='button'
           variant='contained'
           icon={<EditIcon />}
@@ -68,26 +68,26 @@ const ViewCategoryDetail = () => {
       </ButtonWrapper>
       <Wrapper>
         <DetailThumbnailContainer>
-          <TitleText>Hình ảnh</TitleText>
+          <TitleText>Images</TitleText>
           <Image src={categoryData?.image} alt={categoryData?.name} />
         </DetailThumbnailContainer>
         <InformationContainer>
-          <TitleText>Thông tin chung</TitleText>
+          <TitleText>General Information</TitleText>
           <ContentWrapper>
             <Text>
-              <strong>Tên phân loại: </strong>
+              <strong>Category Name: </strong>
               {categoryData?.name}
             </Text>
             <Text>
-              <strong>Mô tả: </strong>
+              <strong>Description: </strong>
               {categoryData?.description}
             </Text>
             <Text>
-              <strong>Ngày tạo: </strong>
+              <strong>Created Date: </strong>
               {dayjs(categoryData?.createdAt).format('hh:mm DD/MM/YYYY')}
             </Text>
             <Text>
-              <strong>Ngày cập nhật: </strong>
+              <strong>Updated Date: </strong>
               {dayjs(categoryData?.updatedAt).format('hh:mm DD/MM/YYYY')}
             </Text>
           </ContentWrapper>
