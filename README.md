@@ -1,30 +1,54 @@
-# React + TypeScript + Vite
+# Furnique — Management Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Management frontend for **Furnique**, a university team project focused on furniture shopping and business operations.
 
-Currently, two official plugins are available:
+This repository contains the management web application. The broader Furnique project includes a customer-facing website, a mobile application, and a backend API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+The management application provides an interface for working with furniture product information and supporting the platform’s operational workflows.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+It connects to the Furnique backend API to retrieve and update application data. Product screens include product details, variant information, and images.
 
-- Configure the top-level `parserOptions` property like this:
+## Technology Stack
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **React** — component-based user interfaces
+- **TypeScript** — typed application development
+- **Material UI** — interface components
+- **React Router** — client-side navigation
+- **REST API integration** — communication with the backend
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## My Contribution
+
+My work focused on the frontend of the management application, including:
+
+- Implementing user interfaces and application interactions.
+- Integrating frontend screens with backend APIs.
+- Investigating interface and integration issues and fixing bugs.
+
+I am also revisiting the project to restore its demo deployment and gain practical experience with application configuration and hosting.
+
+## Engineering Experience
+
+Working on this project gave me experience in:
+
+- Translating application workflows into frontend screens.
+- Handling product and variant data in a typed React application.
+- Connecting user interactions to API operations.
+- Investigating issues across UI components and API responses.
+- Collaborating on a project with separate frontend and backend applications.
+
+## Related Repositories
+
+| Component                    | Repository                                                                        |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| Original management frontend | [Deco-Team/furnique-management](https://github.com/Deco-Team/furnique-management) |
+| Customer website             | [Deco-Team/furnique-web](https://github.com/Deco-Team/furnique-web)               |
+| Mobile application           | [Deco-Team/furnique-mobile](https://github.com/Deco-Team/furnique-mobile)         |
+| Backend API                  | [Deco-Team/furnique-api](https://github.com/Deco-Team/furnique-api)               |
+
+## Project Context
+
+Furnique was developed collaboratively as a university project.
+
+This personal repository is maintained for portfolio presentation, continued learning, and demo deployment. My individual contribution is described above; the complete platform reflects the work of the project team.
