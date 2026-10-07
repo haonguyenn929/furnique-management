@@ -10,7 +10,7 @@ export const categoriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
     headerName: 'No.',
-    width: 100,
+    width: 70,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -24,20 +24,22 @@ export const categoriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'name',
     headerName: 'Category Name',
-    width: 425,
+    flex: 2,
+    minWidth: 220,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'description',
     headerName: 'Description',
-    width: 550,
+    flex: 3,
+    minWidth: 260,
     filterable: false
   },
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 200,
+    width: 120,
     sortable: false,
     filterable: false,
     headerAlign: 'center',

@@ -10,12 +10,20 @@ import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
+import MenuIcon from '@mui/icons-material/Menu'
+import LogoutIcon from '@mui/icons-material/Logout'
+import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import { ProfileButton } from './Appbar.styled'
 import useAuth from '~/hooks/useAuth'
 import { roleValues } from '~/pages/staffs/constants'
 
-const Appbar = () => {
+interface AppbarProps {
+  onDrawerToggle?: () => void
+  title?: string
+}
+
+const Appbar: React.FC<AppbarProps> = ({ onDrawerToggle, title }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null)
   const { logout, user } = useAuth()
@@ -107,6 +115,12 @@ const Appbar = () => {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      <MenuItem onClick={logout}>
+        <IconButton size='large' color='inherit'>
+          <LogoutIcon />
+        </IconButton>
+        <p>Logout</p>
+      </MenuItem>
     </Menu>
   )
 
@@ -114,12 +128,29 @@ const Appbar = () => {
     <>
       <AppBar position='static' sx={{ boxShadow: 'none' }}>
         <Toolbar sx={{ color: 'var(--gray-color)', backgroundColor: '#e0e2e737' }}>
-          {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase placeholder='Search...' inputProps={{ 'aria-label': 'search' }} />
-          </Search> */}
+          <IconButton
+            color='inherit'
+            aria-label='open drawer'
+            edge='start'
+            onClick={onDrawerToggle}
+            sx={{ mr: 1, display: { md: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          {title && (
+            <Typography
+              variant='h6'
+              noWrap
+              component='div'
+              sx={{
+                color: 'var(--primary-color)',
+                fontWeight: 700,
+                fontSize: { xs: '1.1rem', sm: '1.25rem' }
+              }}
+            >
+              {title}
+            </Typography>
+          )}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {/* <IconButton

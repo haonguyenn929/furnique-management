@@ -5,7 +5,7 @@ export const orderListColumns: GridColDef[] = [
   {
     field: 'id',
     headerName: 'No.',
-    width: 50,
+    width: 60,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -19,19 +19,21 @@ export const orderListColumns: GridColDef[] = [
   {
     field: 'products',
     headerName: 'Product',
-    width: 250,
+    flex: 3,
+    minWidth: 260,
     renderCell: (param: GridRenderCellParams) => (
       <CardProducts name={param.row.products} image={param.row.image} variant={param.row.variant} />
     )
   },
-  { field: 'sku', headerName: 'SKU', width: 110, sortable: false },
-  { field: 'orderDate', headerName: 'Order Date', width: 170 },
+  { field: 'sku', headerName: 'SKU', flex: 1, minWidth: 100, sortable: false },
+  { field: 'orderDate', headerName: 'Order Date', flex: 1.2, minWidth: 130 },
   {
     field: 'quantity',
     headerName: 'Quantity',
     headerAlign: 'right',
     type: 'number',
-    width: 80,
+    flex: 0.8,
+    minWidth: 80,
     sortable: false
   },
   {
@@ -39,7 +41,8 @@ export const orderListColumns: GridColDef[] = [
     headerName: 'Unit Price',
     headerAlign: 'right',
     type: 'number',
-    width: 90,
+    flex: 1.2,
+    minWidth: 110,
     sortable: false,
     valueFormatter: (value: number) => {
       if (value == null) return ''
@@ -55,7 +58,8 @@ export const orderListColumns: GridColDef[] = [
     headerName: 'Total',
     headerAlign: 'right',
     type: 'number',
-    width: 100,
+    flex: 1.2,
+    minWidth: 110,
     sortable: false,
     valueFormatter: (value: number) => {
       if (value == null) return ''

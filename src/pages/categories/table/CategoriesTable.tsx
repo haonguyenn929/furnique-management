@@ -6,13 +6,16 @@ import { ICategoryRows } from '~/global/interfaces/categoriesInterface'
 import { ICategoriesProps } from '~/global/interfaces/interface'
 import Loading from '~/components/loading/Loading'
 import { useNavigate } from 'react-router-dom'
+import useDefaultPageSize from '~/hooks/useDefaultPageSize'
+
 const CategoriesTable = () => {
   const { getAllCategories } = useCategoriesApi()
+  const defaultPageSize = useDefaultPageSize()
   const [isLoading, setIsLoading] = useState(false)
   const [categoriesRows, setCategoriesRows] = useState<ICategoryRows[]>([])
   const [totalRows, setTotalRows] = useState(0)
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(defaultPageSize)
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage)

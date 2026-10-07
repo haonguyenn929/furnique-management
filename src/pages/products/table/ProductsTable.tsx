@@ -7,14 +7,17 @@ import useProductsApi from '~/hooks/api/useProductsApi'
 import { productsColumn } from './Column'
 import { useNavigate } from 'react-router-dom'
 
+import useDefaultPageSize from '~/hooks/useDefaultPageSize'
+
 const ProductsTable = () => {
   const { getAllProducts } = useProductsApi()
   const navigate = useNavigate()
+  const defaultPageSize = useDefaultPageSize()
   const [isLoading, setIsLoading] = useState(false)
   const [productRows, setProductRows] = useState<IProductRows[]>([])
   const [totalRows, setTotalRows] = useState(0)
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(defaultPageSize)
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage)

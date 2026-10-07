@@ -1,29 +1,51 @@
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { Box, CardMedia, Typography } from '@mui/material'
 import { ICardOrder } from '~/global/interfaces/ordersInterface'
 
 const CardProducts = ({ image, name, variant }: ICardOrder) => {
   return (
-    <Card sx={{ display: 'flex', height: '52px', width: '220px', boxShadow: 'none' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '100%', gap: '12px' }}>
       <CardMedia
         component='img'
-        sx={{ width: 40, objectFit: 'scale-down', borderRadius: '10px' }}
+        sx={{
+          width: 50,
+          height: 50,
+          minWidth: 50,
+          objectFit: 'cover',
+          borderRadius: '8px',
+          border: '1px solid #f0f0f0',
+          backgroundColor: '#fafafa',
+          flexShrink: 0
+        }}
         image={image}
         alt={name}
       />
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '52px' }}>
-        <CardContent
+      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minWidth: 0, overflow: 'hidden' }}>
+        <Typography
           sx={{
-            height: '52px',
-            padding: '5px 0px 0px 15px'
+            fontSize: '0.925rem',
+            fontWeight: 600,
+            lineHeight: 1.3,
+            color: 'text.primary'
           }}
+          title={name}
         >
-          <Typography sx={{ fontSize: 16 }}>{name}</Typography>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' component='div'>
+          {name}
+        </Typography>
+        {variant && (
+          <Typography
+            sx={{
+              fontSize: '0.8rem',
+              color: 'text.secondary',
+              lineHeight: 1.3,
+              marginTop: '2px'
+            }}
+            title={variant}
+          >
             {variant}
           </Typography>
-        </CardContent>
+        )}
       </Box>
-    </Card>
+    </Box>
   )
 }
 

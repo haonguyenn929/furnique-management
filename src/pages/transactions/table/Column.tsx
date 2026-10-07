@@ -5,7 +5,7 @@ export const transactionsColumn: GridColDef[] = [
   {
     field: 'id',
     headerName: 'No.',
-    width: 100,
+    width: 60,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -19,7 +19,8 @@ export const transactionsColumn: GridColDef[] = [
   {
     field: 'orderInfo',
     headerName: 'Transaction Details',
-    width: 450,
+    flex: 2,
+    minWidth: 220,
     filterable: false,
     valueGetter: (_value, row) => {
       if (row.transaction?.data?.orderCode) return row.transaction.data?.orderCode
@@ -29,14 +30,16 @@ export const transactionsColumn: GridColDef[] = [
   {
     field: 'paymentMethod',
     headerName: 'Payment Method',
-    width: 300,
+    flex: 1.2,
+    minWidth: 150,
     filterable: false,
     sortable: false
   },
   {
     field: 'amount',
     headerName: 'Amount',
-    width: 250,
+    flex: 1.2,
+    minWidth: 140,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
     valueFormatter: (value) => {
@@ -50,7 +53,15 @@ export const transactionsColumn: GridColDef[] = [
   {
     field: 'transactionStatus',
     headerName: 'Transaction Status',
-    width: 300,
-    renderCell: (param: GridRenderCellParams) => <StatusTextDiv status={param.row.transactionStatus} />
+    flex: 1.2,
+    minWidth: 150,
+    headerAlign: 'center',
+    align: 'center',
+    display: 'flex',
+    renderCell: (param: GridRenderCellParams) => (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <StatusTextDiv status={param.row.transactionStatus} />
+      </div>
+    )
   }
 ]

@@ -6,15 +6,17 @@ import useOrdersApi from '~/hooks/api/useOrdersApi'
 import { ordersColumn } from './Column'
 import dayjs from 'dayjs'
 import { useNavigate } from 'react-router-dom'
+import useDefaultPageSize from '~/hooks/useDefaultPageSize'
 
 const OrdersTable = () => {
   const { getAllOrders } = useOrdersApi()
   const navigate = useNavigate()
+  const defaultPageSize = useDefaultPageSize()
   const [isLoading, setIsLoading] = useState(false)
   const [ordersRows, setOrdersRows] = useState<IOrdersRows[]>([])
   const [totalRows, setTotalRows] = useState(0)
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(defaultPageSize)
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage)

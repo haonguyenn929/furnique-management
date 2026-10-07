@@ -9,7 +9,7 @@ export const deliveriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
     headerName: 'No.',
-    width: 80,
+    width: 60,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -23,51 +23,71 @@ export const deliveriesColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'title',
     headerName: 'Task Title',
-    width: 210,
+    flex: 2,
+    minWidth: 180,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'assignee',
     headerName: 'Assignee',
-    width: 180,
+    flex: 1.3,
+    minWidth: 140,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'reporter',
     headerName: 'Reporter',
-    width: 200,
+    flex: 1.3,
+    minWidth: 140,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'dueDate',
     headerName: 'Due Date',
-    width: 175,
+    flex: 1.2,
+    minWidth: 120,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'priority',
     headerName: 'Priority',
-    width: 150,
+    flex: 1,
+    minWidth: 120,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
-    renderCell: (param: GridRenderCellParams) => <Chip status={param.row.priority} />
+    headerAlign: 'center',
+    align: 'center',
+    display: 'flex',
+    renderCell: (param: GridRenderCellParams) => (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <Chip status={param.row.priority} />
+      </div>
+    )
   },
   {
     field: 'status',
     headerName: 'Status',
-    width: 150,
+    flex: 1,
+    minWidth: 120,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
-    renderCell: (param: GridRenderCellParams) => <Chip status={param.row.status} />
+    headerAlign: 'center',
+    align: 'center',
+    display: 'flex',
+    renderCell: (param: GridRenderCellParams) => (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <Chip status={param.row.status} />
+      </div>
+    )
   },
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 150,
+    width: 90,
     sortable: false,
     filterable: false,
     headerAlign: 'center',

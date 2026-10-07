@@ -2,14 +2,19 @@ import styled from 'styled-components'
 import { IStatusOrderProps } from '~/global/interfaces/interface'
 
 export const StatusDiv = styled.div<IStatusOrderProps>`
-  width: fit-content;
-  height: 20px;
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  height: 26px;
+  box-sizing: border-box;
+  white-space: nowrap;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  padding: 5px 15px;
+  padding: 0 8px;
   font-weight: 500;
+  margin: 0;
   ${({ canceled }) =>
     canceled &&
     `

@@ -9,9 +9,10 @@ import useAuth from '~/hooks/useAuth'
 
 interface SidebarProps {
   prop: React.RefObject<HTMLDivElement | null>
+  onClose?: () => void
 }
 
-const OptionList: React.FC<SidebarProps> = ({ prop }) => {
+const OptionList: React.FC<SidebarProps> = ({ prop, onClose }) => {
   const { user } = useAuth()
 
   const [btn, setButton] = useState<number | null>(null) //dashboard is default option
@@ -20,6 +21,9 @@ const OptionList: React.FC<SidebarProps> = ({ prop }) => {
     setButton(id)
     if (prop.current) {
       prop.current.scrollTo(0, 0)
+    }
+    if (onClose) {
+      onClose()
     }
   }
 

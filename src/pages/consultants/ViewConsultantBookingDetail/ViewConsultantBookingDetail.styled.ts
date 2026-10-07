@@ -24,12 +24,25 @@ export const TextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 15px 0;
+  gap: 16px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 
 export const TextLeft = styled.div`
   width: 38%;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `
 
 export const TextRight = styled.div`
   width: 38%;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `

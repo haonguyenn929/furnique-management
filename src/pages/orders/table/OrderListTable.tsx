@@ -58,7 +58,7 @@ const OrderListTable = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <CommonTable paginationMode='client' columns={orderListColumns} rows={orderListRows} />
+    <CommonTable paginationMode='client' columns={orderListColumns} rows={orderListRows} rowHeight={72} />
   )
 }
 

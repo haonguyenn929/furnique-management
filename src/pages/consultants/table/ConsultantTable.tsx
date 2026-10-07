@@ -6,13 +6,15 @@ import { useNavigate } from 'react-router-dom'
 import moment from 'moment'
 import useConsultBookingsApi from '~/hooks/api/useConsultantBookingsApi'
 import { IConsultantBookingRows, IConsultantBookingsProps } from '~/global/interfaces/consultantBookingsInterface'
+import useDefaultPageSize from '~/hooks/useDefaultPageSize'
 
 const ConsultantTable = () => {
+  const defaultPageSize = useDefaultPageSize()
   const [isLoading, setIsLoading] = useState(false)
   const [consultantBookingRows, setConsultantBookingRows] = useState<IConsultantBookingRows[]>([])
   const [totalRows, setTotalRows] = useState(0)
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(defaultPageSize)
 
   const { getConsultantBookings } = useConsultBookingsApi()
 
@@ -43,7 +45,7 @@ const ConsultantTable = () => {
         id: row._id
       }))
       setConsultantBookingRows(consultantBookingRows)
-      setTotalRows(consultantBookingRows.totalDocs)
+      setTotalRows(consultantBookings.totalDocs)
     } catch (error) {
       console.error()
     } finally {

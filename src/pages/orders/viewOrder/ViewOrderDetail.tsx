@@ -181,12 +181,12 @@ const ViewOrderDetail = () => {
                         </Button>
                       </Box>
                     ) : (
-                      <div>
+                      <Box sx={{ display: 'flex', gap: '8px' }}>
                         <CancelButton
                           variant='contained'
                           name='Cancel'
                           type='button'
-                          sx={{ height: '30px', marginRight: '10px' }}
+                          sx={{ height: '30px' }}
                           onClick={handleCancelButton}
                           disable={
                             orderData?.orderStatus !== OrderStatus.PENDING &&
@@ -197,14 +197,14 @@ const ViewOrderDetail = () => {
                           variant='contained'
                           name='Confirm'
                           type='button'
-                          sx={{ height: '30px', marginRight: '10px' }}
+                          sx={{ height: '30px' }}
                           onClick={handleConfirmButton}
                           disable={
                             orderData?.orderStatus === OrderStatus.CANCELED ||
                             orderData?.orderStatus === OrderStatus.CONFIRMED
                           }
                         />
-                      </div>
+                      </Box>
                     )}
                   </>
                 )}
@@ -216,7 +216,9 @@ const ViewOrderDetail = () => {
                   </IconWrapper>
                   <strong>Created Date</strong>
                 </TextHeader>
-                {dayjs(orderData?.orderDate).format('hh:mm:ss DD/MM/YYYY')}
+                <span style={{ fontWeight: 500 }}>
+                  {dayjs(orderData?.orderDate).format('hh:mm:ss DD/MM/YYYY')}
+                </span>
               </TextWrapper>
               <TextWrapper>
                 <TextHeader>

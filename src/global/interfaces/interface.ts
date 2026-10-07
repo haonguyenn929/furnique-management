@@ -122,6 +122,7 @@ export interface IDataTableProps {
   onPageChange?: (newPage: number) => void
   onPageSizeChange?: (newPageSize: number) => void
   pageSizeOptions?: number[]
+  rowHeight?: number
 }
 
 export interface IStatusCategoriesProps {

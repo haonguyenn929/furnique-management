@@ -6,13 +6,15 @@ import { consultantsColumn } from './Column'
 import moment from 'moment'
 import { IVisitBookingProps, IVisitBookingRows } from '~/global/interfaces/visitBookingInterface'
 import useVisitBookingsApi from '~/hooks/api/useVisitBookingsApi'
+import useDefaultPageSize from '~/hooks/useDefaultPageSize'
 
 const VisitBookingTable = () => {
+  const defaultPageSize = useDefaultPageSize()
   const [isLoading, setIsLoading] = useState(false)
-  const [consultantBookingRows, setConsultantBookingRows] = useState<IVisitBookingRows[]>([])
+  const [visitBookingRows, setVisitBookingRows] = useState<IVisitBookingRows[]>([])
   const [totalRows, setTotalRows] = useState(0)
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(defaultPageSize)
 
   const { getVisitBookings } = useVisitBookingsApi()
 
@@ -27,15 +29,15 @@ const VisitBookingTable = () => {
   }
 
   useEffect(() => {
-    getConsultantBookingsData(page, pageSize)
+    getVisitBookingsData(page, pageSize)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, pageSize])
 
-  const getConsultantBookingsData = async (page: number, pageSize: number) => {
+  const getVisitBookingsData = async (page: number, pageSize: number) => {
     try {
       setIsLoading(true)
-      const consultantBookings = await getVisitBookings(page, pageSize)
-      const consultantBookingRows = consultantBookings.docs.map((row: IVisitBookingProps) => ({
+      const visitBookings = await getVisitBookings(page, pageSize)
+      const visitBookingRows = visitBookings.docs.map((row: IVisitBookingProps) => ({
         ...row,
         customer: `${row.customer.lastName} ${row.customer.firstName}`,
         customerEmail: row.customer.email,
@@ -43,8 +45,8 @@ const VisitBookingTable = () => {
         bookingDate: moment(row.bookingDate).format('hh:mm DD/MM/yyyy'),
         id: row._id
       }))
-      setConsultantBookingRows(consultantBookingRows)
-      setTotalRows(consultantBookingRows.totalDocs)
+      setVisitBookingRows(visitBookingRows)
+      setTotalRows(visitBookings.totalDocs)
     } catch (error) {
       console.error()
     } finally {
@@ -57,7 +59,7 @@ const VisitBookingTable = () => {
   ) : (
     <CommonTable
       columns={consultantsColumn(/* { navigate } */)}
-      rows={consultantBookingRows}
+      rows={visitBookingRows}
       totalRows={totalRows}
       page={page}
       pageSize={pageSize}

@@ -5,15 +5,21 @@ interface ContentCardProps {
 }
 
 export const CardWrapper = styled.div`
-  width: 250px;
+  flex: 1 1 calc(25% - 16px);
+  min-width: 220px;
   height: 180px;
   background-color: var(--white-color);
   border-radius: 10px;
-  margin: 20px 0 0 20px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
 `
 
 export const IconWrapper = styled.div`

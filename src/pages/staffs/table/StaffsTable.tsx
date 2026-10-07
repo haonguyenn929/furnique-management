@@ -6,15 +6,17 @@ import { IStaffRows } from '~/global/interfaces/staffsInterface'
 import useStaffsApi from '~/hooks/api/useStaffsApi'
 import { notifyError } from '~/global/toastify'
 import { useNavigate } from 'react-router-dom'
+import useDefaultPageSize from '~/hooks/useDefaultPageSize'
 
 const StaffsTable = () => {
   const navigate = useNavigate()
+  const defaultPageSize = useDefaultPageSize()
   const { getAllStaffs } = useStaffsApi()
   const [isLoading, setIsLoading] = useState(false)
   const [staffsRows, setStaffsRow] = useState<IStaffRows[]>([])
   const [totalRows, setTotalRows] = useState(0)
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(defaultPageSize)
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage)

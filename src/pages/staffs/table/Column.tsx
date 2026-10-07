@@ -9,7 +9,7 @@ export const staffsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
     headerName: 'No.',
-    width: 50,
+    width: 60,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -23,36 +23,40 @@ export const staffsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'staffCode',
     headerName: 'Staff Code',
-    width: 150,
+    flex: 1,
+    minWidth: 110,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'lastName',
     headerName: 'Last Name',
-    width: 130,
+    flex: 1.3,
+    minWidth: 120,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'firstName',
     headerName: 'First Name',
-    width: 130,
+    flex: 1.3,
+    minWidth: 120,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
-  { field: 'email', headerName: 'Email', width: 220 },
-  { field: 'phone', headerName: 'Phone Number', width: 150 },
-  { field: 'status', headerName: 'Status', width: 120 },
+  { field: 'email', headerName: 'Email', flex: 1.8, minWidth: 180 },
+  { field: 'phone', headerName: 'Phone Number', flex: 1.2, minWidth: 120 },
+  { field: 'status', headerName: 'Status', flex: 1, minWidth: 110, headerAlign: 'center', align: 'center' },
   {
     field: 'role',
     headerName: 'Role',
-    width: 180
+    flex: 1,
+    minWidth: 120
   },
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 150,
+    width: 110,
     sortable: false,
     filterable: false,
     headerAlign: 'center',

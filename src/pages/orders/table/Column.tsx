@@ -9,7 +9,7 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
     headerName: 'No.',
-    width: 50,
+    width: 60,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -20,12 +20,13 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
       return page * pageSize + rowIndex + 1
     }
   },
-  { field: 'customer', headerName: 'Customer', width: 180 },
+  { field: 'customer', headerName: 'Customer', flex: 1.5, minWidth: 180 },
   {
     field: 'orderDate',
     headerName: 'Order Date',
     type: 'date',
-    width: 130,
+    flex: 1,
+    minWidth: 120,
     valueGetter: (value) => {
       if (!value) return null
 
@@ -38,34 +39,48 @@ export const ordersColumn = ({ navigate }: ColumnProps): GridColDef[] => [
     headerName: 'Total Amount',
     headerAlign: 'right',
     type: 'number',
-    width: 180
+    flex: 1,
+    minWidth: 130
   },
   {
     field: 'transactionStatus',
     headerName: 'Transaction Status',
-    width: 180,
+    flex: 1.2,
+    minWidth: 150,
     headerAlign: 'center',
     align: 'center',
-    renderCell: (param: GridRenderCellParams) => <StatusTextDiv status={param.row.transactionStatus} />
+    display: 'flex',
+    renderCell: (param: GridRenderCellParams) => (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <StatusTextDiv status={param.row.transactionStatus} />
+      </div>
+    )
   },
   {
     field: 'orderStatus',
     headerName: 'Order Status',
-    width: 180,
+    flex: 1.2,
+    minWidth: 140,
     headerAlign: 'center',
     align: 'center',
-    renderCell: (param: GridRenderCellParams) => <StatusTextDiv status={param.row.orderStatus} />
+    display: 'flex',
+    renderCell: (param: GridRenderCellParams) => (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <StatusTextDiv status={param.row.orderStatus} />
+      </div>
+    )
   },
   {
     field: 'notes',
     headerName: 'Notes',
-    width: 280,
+    flex: 3,
+    minWidth: 160,
     filterable: false
   },
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 100,
+    width: 90,
     sortable: false,
     filterable: false,
     headerAlign: 'center',

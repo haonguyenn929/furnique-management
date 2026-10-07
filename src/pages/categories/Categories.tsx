@@ -10,7 +10,7 @@ const Categories = () => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', width: '100%', gap: '12px' }}>
       <PrimaryButton
         name='Add Category'
         type='submit'

@@ -11,7 +11,7 @@ export const productsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'id',
     headerName: 'No.',
-    width: 50,
+    width: 60,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -25,28 +25,39 @@ export const productsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'name',
     headerName: 'Product',
-    width: 220,
+    flex: 2,
+    minWidth: 200,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
-  { field: 'categories', headerName: 'Category', width: 180 },
-  { field: 'description', headerName: 'Description', width: 280 },
+  { field: 'categories', headerName: 'Category', flex: 1.2, minWidth: 150 },
+  { field: 'description', headerName: 'Description', flex: 1.8, minWidth: 180 },
   {
     field: 'brand',
     headerName: 'Brand',
-    width: 100
+    flex: 0.9,
+    minWidth: 100
   },
   {
     field: 'status',
     headerName: 'Status',
-    width: 150,
-    renderCell: (param: GridRenderCellParams) => <StatusTextDiv status={param.row.status} />
+    flex: 1,
+    minWidth: 120,
+    headerAlign: 'center',
+    align: 'center',
+    display: 'flex',
+    renderCell: (param: GridRenderCellParams) => (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <StatusTextDiv status={param.row.status} />
+      </div>
+    )
   },
   {
     field: 'createdAt',
     headerName: 'Created Date',
     type: 'date',
-    width: 120,
+    flex: 1,
+    minWidth: 120,
     valueGetter: (value) => {
       if (!value) return null
 
@@ -57,7 +68,7 @@ export const productsColumn = ({ navigate }: ColumnProps): GridColDef[] => [
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 200,
+    width: 110,
     sortable: false,
     filterable: false,
     headerAlign: 'center',

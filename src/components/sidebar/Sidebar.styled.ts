@@ -2,11 +2,17 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   background-color: var(--white-color);
-  width: 15%;
+  width: 240px;
+  min-width: 240px;
+  flex-shrink: 0;
   height: 100%;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `
 export const SideBarWrapper = styled.div`
   width: 100%;

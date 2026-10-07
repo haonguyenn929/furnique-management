@@ -6,6 +6,12 @@ export const Wrapper = styled.section`
   margin: 0.25rem 1rem;
   overflow-x: hidden;
   overflow-y: auto;
+  gap: 16px;
+
+  @media (max-width: 900px) {
+    flex-direction: column-reverse;
+    margin: 0.25rem 0.5rem;
+  }
 `
 
 export const CategoryContainer = styled.div`
@@ -14,12 +20,23 @@ export const CategoryContainer = styled.div`
   background-color: var(--white-color);
   border-radius: 10px;
   padding: 0 0 20px 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    padding: 20px;
+  }
 `
 
 export const GeneralContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
+  box-sizing: border-box;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `
 
 export const InformationContainer = styled.div`
@@ -38,6 +55,8 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 0.25rem;
+  flex-wrap: wrap;
+  gap: 8px;
 `
 export const ErrorText = styled.p`
   color: var(--red-color);

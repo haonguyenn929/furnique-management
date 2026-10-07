@@ -9,7 +9,7 @@ export const consultantsColumn = (/* { navigate }: ColumnProps */): GridColDef[]
   {
     field: 'id',
     headerName: 'No.',
-    width: 150,
+    width: 60,
     filterable: false,
     sortable: false,
     valueGetter: (_value, row, _column, apiRef) => {
@@ -23,37 +23,49 @@ export const consultantsColumn = (/* { navigate }: ColumnProps */): GridColDef[]
   {
     field: 'customer',
     headerName: 'Customer',
-    width: 250,
+    flex: 2,
+    minWidth: 180,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'customerEmail',
     headerName: 'Email',
-    width: 250,
+    flex: 1.8,
+    minWidth: 180,
     filterable: false
   },
   {
     field: 'customerPhone',
     headerName: 'Phone Number',
-    width: 150,
+    flex: 1.2,
+    minWidth: 130,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'bookingDate',
     headerName: 'Booking Date',
-    width: 150,
+    flex: 1.2,
+    minWidth: 130,
     filterable: false,
     sortingOrder: ['asc', 'desc']
   },
   {
     field: 'bookingStatus',
     headerName: 'Status',
-    width: 180,
+    flex: 1,
+    minWidth: 120,
     filterable: false,
     sortingOrder: ['asc', 'desc'],
-    renderCell: (param: GridRenderCellParams) => <Chip status={param.row.bookingStatus} />
+    headerAlign: 'center',
+    align: 'center',
+    display: 'flex',
+    renderCell: (param: GridRenderCellParams) => (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <Chip status={param.row.bookingStatus} />
+      </div>
+    )
   }
   /* {
     field: 'actions',

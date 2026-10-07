@@ -6,13 +6,15 @@ import { tasksColumn } from './Column'
 import { ITaskRows, ITasksProps } from '~/global/interfaces/tasksInterface'
 import useTasksApi from '~/hooks/api/useTasksApi'
 import moment from 'moment'
+import useDefaultPageSize from '~/hooks/useDefaultPageSize'
 
 const TasksTable = () => {
+  const defaultPageSize = useDefaultPageSize()
   const [isLoading, setIsLoading] = useState(false)
   const [tasksRows, setTasksRows] = useState<ITaskRows[]>([])
   const [totalRows, setTotalRows] = useState(0)
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(defaultPageSize)
 
   const { getAllTasksForAdmin } = useTasksApi()
 

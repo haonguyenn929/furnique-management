@@ -94,12 +94,12 @@ const ViewProductDetail = () => {
         <Typography variant='h3' sx={{ mt: 3, fontWeight: 'bold', textAlign: 'center' }}>
           {productData?.name}
         </Typography>
-        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'center', md: 'flex-start' } }}>
           <Carousel
             navButtonsAlwaysVisible
             autoPlay={false}
             sx={{
-              width: '30%',
+              width: { xs: '100%', sm: '80%', md: '30%' },
               m: '0 auto'
             }}
           >
@@ -109,7 +109,7 @@ const ViewProductDetail = () => {
               </Item>
             ))}
           </Carousel>
-          <Box sx={{ width: '65%', p: 3 }}>
+          <Box sx={{ width: { xs: '100%', md: '65%' }, p: { xs: 2, sm: 3 }, boxSizing: 'border-box' }}>
             <Typography variant='h5' sx={{ my: 2, fontWeight: 'bold' }}>
               General Information
             </Typography>
